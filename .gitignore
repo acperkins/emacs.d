@@ -1,8 +1,6 @@
 /auto-save-list/*
 /custom.el
 /elpa/*
-/elpa-stable/*
-/org/*
 /site-lisp/*
 
 !/site-lisp/README.md
