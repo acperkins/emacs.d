@@ -1,6 +1,7 @@
 /auto-save-list/*
 /custom.el
 /elpa/*
+/eshell/*
 /site-lisp/*
 
 !/site-lisp/README.md
