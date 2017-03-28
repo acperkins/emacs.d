@@ -32,3 +32,6 @@
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
+
+(global-linum-mode t)
+(global-visual-line-mode t)
