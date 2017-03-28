@@ -31,6 +31,12 @@
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
 
+;; Load and enable heml.
+(require 'helm-config)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(helm-mode t)
+
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
 (global-linum-mode t)
