@@ -25,21 +25,9 @@
 (setq backup-inhibited t)
 (setq auto-save-default nil)
 (setq initial-major-mode 'org-mode)
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load-theme 'tango-dark)
 
-;; Keep these at the end of the file and do not edit them by hand.
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (use-package markdown-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 (prefer-coding-system 'utf-8)
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
