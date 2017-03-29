@@ -2,6 +2,7 @@
 /custom.el
 /elpa/*
 /eshell/*
+/games/*
 /site-lisp/*
 
 !/site-lisp/README.md
