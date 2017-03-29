@@ -41,6 +41,7 @@
 (c-set-offset 'arglist-cont-nonempty '4)
 (global-linum-mode t)
 (global-visual-line-mode t)
+(global-whitespace-mode t)
 (load-theme 'tango-dark)
 (setq auto-save-default nil)
 (setq backup-inhibited t)
