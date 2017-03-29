@@ -1,8 +1,7 @@
-/auto-save-list/*
-/custom.el
-/elpa/*
-/eshell/*
-/games/*
-/site-lisp/*
+*.*
+*/*
 
+!/init.el
+!/lisp/*
+!/README.md
 !/site-lisp/README.md
