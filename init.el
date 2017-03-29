@@ -51,4 +51,5 @@
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+(if (file-readable-p (symbol-value 'custom-file))
+  (load custom-file))
