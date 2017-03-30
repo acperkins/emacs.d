@@ -19,6 +19,7 @@
 
 ;; Automatically install required packages from the package manager.
 (use-package helm :ensure t)
+(use-package linum-relative :ensure t)
 (use-package markdown-mode :ensure t)
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
@@ -36,6 +37,10 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (helm-mode t)
+
+;; Load and enable linum-relative
+(require 'linum-relative)
+(linum-relative-global-mode)
 
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
