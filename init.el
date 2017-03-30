@@ -40,7 +40,6 @@
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
 (global-linum-mode t)
-(global-visual-line-mode t)
 (global-whitespace-mode t)
 (load-theme 'tango-dark)
 (setq auto-save-default nil)
@@ -48,6 +47,8 @@
 (setq c-default-style "bsd")
 (setq inhibit-startup-screen t)
 (setq initial-major-mode 'org-mode)
+(setq line-move-visual nil)
+(setq track-eol t)
 
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.
