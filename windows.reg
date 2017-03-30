@@ -15,7 +15,7 @@ Windows Registry Editor Version 5.00
   22,00,22,00,20,00,2d,00,63,00,20,00,22,00,25,00,31,00,22,00,00,00
 
 ;=======================================================================
-; Define EmacsFile to open with Emacs
+; Define "Emacs" file type to open with Emacs
 
 [HKEY_CURRENT_USER\SOFTWARE\Classes\Emacs\DefaultIcon]
 @="%SystemRoot%\\System32\\imageres.dll,97"
