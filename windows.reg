@@ -1,0 +1,59 @@
+Windows Registry Editor Version 5.00
+
+;=======================================================================
+; Add an Open with Emacs to all file types.
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\emacs]
+@="Open with Emacs"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\emacs\command]
+; Maps to "\"%LOCALAPPDATA%\\Emacs\\bin\\emacsclientw.exe\" -na \"\" -c \"%1\""
+@=hex(2):22,00,25,00,4c,00,4f,00,43,00,41,00,4c,00,41,00,50,00,50,00,44,\
+  00,41,00,54,00,41,00,25,00,5c,00,45,00,6d,00,61,00,63,00,73,00,5c,00,62,00,\
+  69,00,6e,00,5c,00,65,00,6d,00,61,00,63,00,73,00,63,00,6c,00,69,00,65,00,6e,\
+  00,74,00,77,00,2e,00,65,00,78,00,65,00,22,00,20,00,2d,00,6e,00,61,00,20,00,\
+  22,00,22,00,20,00,2d,00,63,00,20,00,22,00,25,00,31,00,22,00,00,00
+
+;=======================================================================
+; Open .org files with Emacs by default.
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\.org]
+@="OrgMode"
+"Content Type"="text/x-org-mode"
+"PerceivedType"="text"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\OrgMode\DefaultIcon]
+@="%SystemRoot%\\System32\\imageres.dll,97"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\OrgMode\shell\open]
+@="Open"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\OrgMode\shell\open\command]
+; Maps to "\"%LOCALAPPDATA%\\Emacs\\bin\\emacsclientw.exe\" -na \"\" -c \"%1\""
+@=hex(2):22,00,25,00,4c,00,4f,00,43,00,41,00,4c,00,41,00,50,00,50,00,44,\
+  00,41,00,54,00,41,00,25,00,5c,00,45,00,6d,00,61,00,63,00,73,00,5c,00,62,00,\
+  69,00,6e,00,5c,00,65,00,6d,00,61,00,63,00,73,00,63,00,6c,00,69,00,65,00,6e,\
+  00,74,00,77,00,2e,00,65,00,78,00,65,00,22,00,20,00,2d,00,6e,00,61,00,20,00,\
+  22,00,22,00,20,00,2d,00,63,00,20,00,22,00,25,00,31,00,22,00,00,00
+
+;=======================================================================
+; Open .el files with Emacs by default.
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\.el]
+@="elisp"
+"Content Type"="text/elisp"
+"PerceivedType"="text"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\elisp\DefaultIcon]
+@="%SystemRoot%\\System32\\imageres.dll,97"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\elisp\shell\open]
+@="Open"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\elisp\shell\open\command]
+; Maps to "\"%LOCALAPPDATA%\\Emacs\\bin\\emacsclientw.exe\" -na \"\" -c \"%1\""
+@=hex(2):22,00,25,00,4c,00,4f,00,43,00,41,00,4c,00,41,00,50,00,50,00,44,\
+  00,41,00,54,00,41,00,25,00,5c,00,45,00,6d,00,61,00,63,00,73,00,5c,00,62,00,\
+  69,00,6e,00,5c,00,65,00,6d,00,61,00,63,00,73,00,63,00,6c,00,69,00,65,00,6e,\
+  00,74,00,77,00,2e,00,65,00,78,00,65,00,22,00,20,00,2d,00,6e,00,61,00,20,00,\
+  22,00,22,00,20,00,2d,00,63,00,20,00,22,00,25,00,31,00,22,00,00,00
