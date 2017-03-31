@@ -38,9 +38,18 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (helm-mode t)
 
-;; Load and enable linum-relative
+;; Load and enable linum-relative.
 (require 'linum-relative)
 (linum-relative-global-mode)
+
+;; Show ISO week numbers in calendar.
+(setq calendar-intermonth-text
+  '(propertize
+     (format "%2d"
+       (car
+         (calendar-iso-from-absolute
+           (calendar-absolute-from-gregorian (list month day year)))))
+     'font-lock-face 'font-lock-function-name-face))
 
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
@@ -52,6 +61,7 @@
 (setq auto-save-default nil)
 (setq backup-inhibited t)
 (setq c-default-style "bsd")
+(setq calendar-week-start-day 1)
 (setq inhibit-startup-screen t)
 (setq initial-major-mode 'org-mode)
 (setq line-move-visual nil)
