@@ -14,4 +14,4 @@ from the end of the command line and replace it with the following:
     emacsclientw.exe -c
 
 This will use an existing Emacs server instance to run the client. The
-file `daemon.cmd` will start an Emacs server instance.
+file `server.cmd` will start an Emacs server instance.
