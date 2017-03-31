@@ -11,8 +11,7 @@ Run Emacs once on Windows and pin the icon to the taskbar. Then close
 Emacs, right-click the icon, and select Properties. Remove `emacs.exe`
 from the end of the command line and replace it with the following:
 
-    emacsclientw.exe -na "" -c
+    emacsclientw.exe -c
 
-This will start an Emacs server instance the first time the shortcut
-is used, and each subsequent use will start a new client frame
-connected to that server.
+This will use an existing Emacs server instance to run the client. The
+file `daemon.cmd` will start an Emacs server instance.
