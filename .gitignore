@@ -4,5 +4,6 @@
 !/init.el
 !/lisp/*
 !/README.md
+!/server.cmd
 !/site-lisp/README.md
 !/windows.reg
