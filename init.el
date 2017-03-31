@@ -44,6 +44,8 @@
 
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cc" 'org-capture)
 (global-linum-mode t)
 (global-whitespace-mode t)
 (load-theme 'tango-dark)
