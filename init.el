@@ -44,12 +44,12 @@
 
 ;; Show ISO week numbers in calendar.
 (setq calendar-intermonth-text
-  '(propertize
-     (format "%2d"
-       (car
-         (calendar-iso-from-absolute
-           (calendar-absolute-from-gregorian (list month day year)))))
-     'font-lock-face 'font-lock-function-name-face))
+      '(propertize
+        (format "%2d"
+                (car
+                 (calendar-iso-from-absolute
+                  (calendar-absolute-from-gregorian (list month day year)))))
+        'font-lock-face 'font-lock-function-name-face))
 
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
@@ -66,6 +66,7 @@
 (setq initial-major-mode 'org-mode)
 (setq line-move-visual nil)
 (setq track-eol t)
+(setq-default indent-tabs-mode nil)
 (show-paren-mode t)
 
 ;; Set and read the external (non checked-in) Custom file. This
