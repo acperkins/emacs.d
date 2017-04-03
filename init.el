@@ -66,6 +66,7 @@
 (setq initial-major-mode 'org-mode)
 (setq line-move-visual nil)
 (setq track-eol t)
+(show-paren-mode t)
 
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.
