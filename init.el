@@ -32,6 +32,15 @@
 (setq coding-system-for-read 'utf-8)
 (setq coding-system-for-write 'utf-8)
 
+;; Define function to shutdown emacs server instance.
+;; Source: <https://www.emacswiki.org/emacs/EmacsAsDaemon#toc12>
+(defun server-shutdown ()
+  "Save buffers, Quit, and Shutdown (kill) server"
+  (interactive)
+  (save-some-buffers)
+  (kill-emacs)
+  )
+
 ;; Load and enable heml.
 (require 'helm-config)
 (global-set-key (kbd "M-x") 'helm-M-x)
