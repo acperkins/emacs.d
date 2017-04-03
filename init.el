@@ -65,6 +65,8 @@
 (setq inhibit-startup-screen t)
 (setq initial-major-mode 'org-mode)
 (setq line-move-visual nil)
+(setq shr-inhibit-images t)
+(setq shr-use-fonts nil)
 (setq track-eol t)
 (setq-default indent-tabs-mode nil)
 (show-paren-mode t)
