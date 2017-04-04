@@ -50,8 +50,7 @@
   "Save buffers, Quit, and Shutdown (kill) server"
   (interactive)
   (save-some-buffers)
-  (kill-emacs)
-  )
+  (kill-emacs))
 
 ;; Show ISO week numbers in calendar.
 (setq calendar-intermonth-text
