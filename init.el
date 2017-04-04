@@ -18,9 +18,21 @@
 (eval-when-compile (require 'use-package))
 
 ;; Automatically install required packages from the package manager.
-(use-package helm :ensure t)
-(use-package linum-relative :ensure t)
-(use-package markdown-mode :ensure t)
+(use-package helm
+  :ensure t
+  :init
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  :config
+  (require 'helm-config)
+  (helm-mode t))
+(use-package linum-relative
+  :ensure t
+  :config
+  (require 'linum-relative)
+  (linum-relative-global-mode))
+(use-package markdown-mode
+  :ensure t)
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
@@ -40,16 +52,6 @@
   (save-some-buffers)
   (kill-emacs)
   )
-
-;; Load and enable heml.
-(require 'helm-config)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(helm-mode t)
-
-;; Load and enable linum-relative.
-(require 'linum-relative)
-(linum-relative-global-mode)
 
 ;; Show ISO week numbers in calendar.
 (setq calendar-intermonth-text
