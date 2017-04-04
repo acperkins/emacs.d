@@ -75,6 +75,7 @@
 (setq inhibit-startup-screen t)
 (setq initial-major-mode 'org-mode)
 (setq line-move-visual nil)
+(setq org-startup-folded nil)
 (setq shr-inhibit-images t)
 (setq shr-use-fonts nil)
 (setq track-eol t)
