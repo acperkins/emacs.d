@@ -1,5 +1,6 @@
 *.*
 */*
+/eww-bookmarks
 
 !/init.el
 !/lisp/*
