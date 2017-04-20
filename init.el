@@ -17,6 +17,10 @@
   (package-install 'use-package))
 (eval-when-compile (require 'use-package))
 
+;; Save my fingers somewhat.
+(define-key key-translation-map (kbd "<f7>") (kbd "C-x"))
+(define-key key-translation-map (kbd "<f8>") (kbd "C-c"))
+
 ;; Automatically install required packages from the package manager.
 (use-package helm
   :ensure t
