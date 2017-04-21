@@ -90,7 +90,7 @@
 (define-key global-map "\C-cc" 'org-capture)
 (global-linum-mode t)
 (global-whitespace-mode t)
-(global-whitespace-toggle-options newline)
+(global-whitespace-toggle-options 'newline)
 (load-theme 'tango-dark)
 (setq auto-save-default nil)
 (setq backup-inhibited t)
