@@ -47,6 +47,11 @@
   :config
   (require 'evil)
   (evil-mode 1))
+(use-package evil-surround
+  :ensure t
+  :config
+  (require 'evil-surround)
+  (global-evil-surround-mode 1))
 (use-package evil-org
   :ensure t
   :config
