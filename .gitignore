@@ -1,10 +1,8 @@
-*.*
-*/*
+/auto-save-list/*
+/custom.el
+/elpa/*
+/eshell/*
 /eww-bookmarks
-
-!/init.el
-!/lisp/*
-!/README.md
-!/server.cmd
-!/site-lisp/README.md
-!/windows.reg
+/server/*
+/site-lisp/*
+/url/*
