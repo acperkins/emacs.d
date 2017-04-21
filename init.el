@@ -38,6 +38,19 @@
   (linum-relative-global-mode))
 (use-package markdown-mode
   :ensure t)
+(use-package org
+  :ensure t
+  :config
+  (require 'org))
+(use-package evil
+  :ensure t
+  :config
+  (require 'evil)
+  (evil-mode 1))
+(use-package evil-org
+  :ensure t
+  :config
+  (require 'evil-org))
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
