@@ -43,20 +43,6 @@
   :ensure t
   :config
   (require 'org))
-(use-package evil
-  :ensure t
-  :config
-  (require 'evil)
-  (evil-mode 1))
-(use-package evil-surround
-  :ensure t
-  :config
-  (require 'evil-surround)
-  (global-evil-surround-mode 1))
-(use-package evil-org
-  :ensure t
-  :config
-  (require 'evil-org))
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
