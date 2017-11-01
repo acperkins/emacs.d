@@ -94,7 +94,6 @@
 (setq c-default-style "bsd")
 (setq calendar-week-start-day 1)
 (setq inhibit-startup-screen t)
-(setq initial-major-mode 'org-mode)
 (setq line-move-visual nil)
 (setq org-startup-folded nil)
 (setq org-log-done 'time)
