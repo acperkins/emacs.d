@@ -100,6 +100,7 @@
 (setq shr-inhibit-images t)
 (setq shr-use-fonts nil)
 (setq track-eol t)
+(setq x-super-keysym 'meta)
 (setq-default indent-tabs-mode nil)
 (show-paren-mode t)
 
