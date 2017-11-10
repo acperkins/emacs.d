@@ -1,0 +1,8 @@
+/auto-save-list/*
+/custom.el
+/elpa/*
+/eshell/*
+/eww-bookmarks
+/server/*
+/site-lisp/*
+/url/*
