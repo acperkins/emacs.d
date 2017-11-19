@@ -42,6 +42,8 @@
   :ensure t
   :config
   (require 'org))
+(use-package go-mode
+  :ensure t))
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
