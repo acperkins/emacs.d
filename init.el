@@ -61,6 +61,18 @@
   (save-some-buffers)
   (kill-emacs))
 
+;; Run the whole buffer through an external command.
+;; Source: <https://www.emacswiki.org/emacs/ExecuteExternalCommand#toc2>
+(defun shell-command-on-buffer ()
+  "Asks for a command and executes it in inferior shell with current buffer
+as input."
+  (interactive)
+  (shell-command-on-region
+   (point-min) (point-max)
+   (read-shell-command "Shell command on buffer: ")
+   nil t))
+(global-set-key (kbd "M-\"") 'shell-command-on-buffer)
+
 ;; Show ISO week numbers in calendar.
 (setq calendar-intermonth-text
       '(propertize
