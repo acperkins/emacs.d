@@ -76,6 +76,9 @@ as input."
 (global-set-key (kbd "M-\"") 'shell-command-on-buffer)
 
 ;; Show ISO week numbers in calendar.
+(copy-face font-lock-constant-face 'calendar-iso-week-face)
+(set-face-attribute 'calendar-iso-week-face nil
+                    :height 0.7)
 (setq calendar-intermonth-text
       '(propertize
         (format "%2d"
