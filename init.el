@@ -56,7 +56,7 @@
 (setq coding-system-for-write 'utf-8)
 
 ;; Define function to shutdown emacs server instance.
-;; Source: <https://www.emacswiki.org/emacs/EmacsAsDaemon#toc12>
+;; Source: <https://www.emacswiki.org/emacs/EmacsAsDaemon>
 (defun server-shutdown ()
   "Save buffers, Quit, and Shutdown (kill) server"
   (interactive)
@@ -64,7 +64,7 @@
   (kill-emacs))
 
 ;; Run the whole buffer through an external command.
-;; Source: <https://www.emacswiki.org/emacs/ExecuteExternalCommand#toc2>
+;; Source: <https://www.emacswiki.org/emacs/ExecuteExternalCommand>
 (defun shell-command-on-buffer ()
   "Asks for a command and executes it in inferior shell with current buffer
 as input."
@@ -76,6 +76,7 @@ as input."
 (global-set-key (kbd "M-\"") 'shell-command-on-buffer)
 
 ;; Show ISO week numbers in calendar.
+;; Source: <https://www.emacswiki.org/emacs/CalendarWeekNumbers>
 (copy-face font-lock-constant-face 'calendar-iso-week-face)
 (set-face-attribute 'calendar-iso-week-face nil
                     :height 0.7)
@@ -88,6 +89,7 @@ as input."
         'font-lock-face 'font-lock-function-name-face))
 
 ;; Save temporary files in the temporary directory.
+;; Source: <https://stackoverflow.com/a/33085>
 (defvar user-temporary-file-directory
   (concat temporary-file-directory user-login-name "/"))
 (make-directory user-temporary-file-directory t)
