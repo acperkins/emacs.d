@@ -1,6 +1,6 @@
 ;; .emacs.d/init.el
 ;; Anthony Perkins
-;; https://github.com/acperkins/emacs.d
+;; https://acperkins.com/r/acp/emacs.d
 
 ;; Set up the Emacs packaging system.
 (require 'package)
