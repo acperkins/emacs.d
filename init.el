@@ -18,6 +18,7 @@
 (eval-when-compile (require 'use-package))
 
 ;; Reduce cramp from common keyboard shortcuts.
+(define-key key-translation-map (kbd "<f5>") (kbd "C-u"))
 (define-key key-translation-map (kbd "<f7>") (kbd "C-c"))
 (define-key key-translation-map (kbd "<f8>") (kbd "C-x"))
 (define-key key-translation-map (kbd "<f9>") (kbd "M-x"))
