@@ -32,11 +32,6 @@
     :config
     (require 'helm-config)
     (helm-mode t)))
-(use-package linum-relative
-  :ensure t
-  :config
-  (require 'linum-relative)
-  (linum-relative-global-mode))
 (use-package markdown-mode
   :ensure t)
 (use-package org
@@ -107,7 +102,6 @@ as input."
 (c-set-offset 'arglist-cont-nonempty '4)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cc" 'org-capture)
-(global-linum-mode t)
 (load-theme 'tango-dark)
 (setq auto-save-default nil)
 (setq backup-inhibited t)
