@@ -41,6 +41,13 @@
   (require 'org))
 (use-package go-mode
   :ensure t)
+(use-package auto-complete
+  :ensure t
+  :config
+  (ac-config-default))
+(use-package go-autocomplete
+  ; Don't forget to run `go get -u github.com/nsf/gocode`.
+  :ensure t)
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
