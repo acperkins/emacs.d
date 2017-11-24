@@ -103,6 +103,7 @@ as input."
 (c-set-offset 'arglist-cont-nonempty '4)
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cc" 'org-capture)
+(define-key global-map "\C-ck" 'kill-this-buffer)
 (load-theme 'tango-dark)
 (setq auto-save-default nil)
 (setq backup-inhibited t)
