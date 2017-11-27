@@ -159,6 +159,7 @@ as input."
 (setq shr-use-fonts nil)
 (setq track-eol t)
 (setq whitespace-style (delete 'empty whitespace-style))
+(setq whitespace-style (delete 'lines whitespace-style))
 (setq x-super-keysym 'meta)
 (setq-default indent-tabs-mode nil)
 (show-paren-mode t)
