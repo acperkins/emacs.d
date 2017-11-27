@@ -31,10 +31,6 @@
     (helm-mode t)))
 (use-package markdown-mode
   :ensure t)
-(use-package org
-  :ensure t
-  :config
-  (require 'org))
 (use-package go-mode
   :ensure t)
 (use-package auto-complete
