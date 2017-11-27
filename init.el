@@ -115,16 +115,22 @@ as input."
                                (file+headline "~/Sync/gtd/inbox.org" "Tasks")
                                "* TODO %i%?")
                               ("r" "Reminder" entry
-                               (file+headline "~/Sync/gtd/reminders.org" "Reminder")
+                               (file+headline "~/Sync/gtd/reminders.org"
+                                              "Reminder")
                                "* %i%? \n %U")))
 (setq org-refile-targets '(("~/Sync/gtd/inbox.org" :maxlevel . 3)
                            ("~/Sync/gtd/someday.org" :level . 1)
                            ("~/Sync/gtd/reminders.org" :maxlevel . 2)))
-(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")))
-(setq org-agenda-custom-commands 
+(setq org-todo-keywords '((sequence "TODO(t)"
+                                    "WAITING(w)"
+                                    "|"
+                                    "DONE(d)"
+                                    "CANCELLED(c)")))
+(setq org-agenda-custom-commands
       '(("w" "Work" tags-todo "@work"
          ((org-agenda-overriding-header "Work")
-          (org-agenda-skip-function #'my-org-agenda-skip-all-siblings-but-first)))))
+          (org-agenda-skip-function
+          #'my-org-agenda-skip-all-siblings-but-first)))))
 (defun my-org-agenda-skip-all-siblings-but-first ()
   "Skip all but the first non-done entry."
   (let (should-skip-entry)
