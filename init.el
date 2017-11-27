@@ -20,15 +20,6 @@
 (define-key key-translation-map (kbd "<f9>") (kbd "M-x"))
 
 ;; Automatically install required packages from the package manager.
-(unless (version< emacs-version "25.0")
-  (use-package helm
-    :ensure t
-    :init
-    (global-set-key (kbd "M-x") 'helm-M-x)
-    (global-set-key (kbd "C-x C-f") 'helm-find-files)
-    :config
-    (require 'helm-config)
-    (helm-mode t)))
 (use-package markdown-mode
   :ensure t)
 (use-package go-mode
