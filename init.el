@@ -56,8 +56,6 @@
 
 ;; Prefer UTF-8 encoding for all files.
 (prefer-coding-system 'utf-8)
-(setq coding-system-for-read 'utf-8)
-(setq coding-system-for-write 'utf-8)
 
 ;; Define function to shutdown emacs server instance.
 ;; Source: <https://www.emacswiki.org/emacs/EmacsAsDaemon>
