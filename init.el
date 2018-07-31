@@ -32,6 +32,13 @@
 (use-package go-autocomplete
   ; Don't forget to run `go get -u github.com/nsf/gocode`.
   :ensure t)
+(use-package jedi
+  ; Run (jedi:install-server) if needed
+  ; (requires `pip install --user virtualenv`).
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (setq jedi:complete-on-dot t))
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
