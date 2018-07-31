@@ -1,6 +1,6 @@
 ;; .emacs.d/init.el
 ;; Anthony Perkins
-;; https://acperkins.com/r/acp/emacs.d
+;; https://git.acperkins.com/acp/emacs.d
 
 ;; Set up the Emacs packaging system.
 (require 'package)
@@ -90,18 +90,18 @@ as input."
 ;; Getting Things Done in org-mode.
 ;; Source: <https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html>
 (setq org-agenda-files '("~/Sync/gtd/inbox.org"
-                         "~/Sync/gtd/projects.org"
-                         "~/Sync/gtd/reminders.org"))
+                         "~/Nextcloud/gtd/projects.org"
+                         "~/Nextcloud/gtd/reminders.org"))
 (setq org-capture-templates '(("t" "Todo [inbox]" entry
-                               (file+headline "~/Sync/gtd/inbox.org" "Tasks")
+                               (file+headline "~/Nextcloud/gtd/inbox.org" "Tasks")
                                "* TODO %i%?")
                               ("r" "Reminder" entry
-                               (file+headline "~/Sync/gtd/reminders.org"
+                               (file+headline "~/Nextcloud/gtd/reminders.org"
                                               "Reminder")
                                "* %i%? \n %U")))
-(setq org-refile-targets '(("~/Sync/gtd/inbox.org" :maxlevel . 3)
-                           ("~/Sync/gtd/someday.org" :level . 1)
-                           ("~/Sync/gtd/reminders.org" :maxlevel . 2)))
+(setq org-refile-targets '(("~/Nextcloud/gtd/inbox.org" :maxlevel . 3)
+                           ("~/Nextcloud/gtd/someday.org" :level . 1)
+                           ("~/Nextcloud/gtd/reminders.org" :maxlevel . 2)))
 (setq org-todo-keywords '((sequence "TODO(t)"
                                     "WAITING(w)"
                                     "|"
@@ -138,6 +138,7 @@ as input."
 (setq backup-inhibited t)
 (setq c-default-style "bsd")
 (setq calendar-week-start-day 1)
+(setq default-frame-alist '((cursor-color . "white")))
 (setq inhibit-startup-screen t)
 (setq line-move-visual nil)
 (setq org-startup-folded nil)
