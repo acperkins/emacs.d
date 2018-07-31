@@ -18,6 +18,7 @@
 (define-key key-translation-map (kbd "<f7>") (kbd "C-c"))
 (define-key key-translation-map (kbd "<f8>") (kbd "C-x"))
 (define-key key-translation-map (kbd "<f9>") (kbd "M-x"))
+(global-set-key (kbd "<f6>") 'whitespace-mode)
 
 ;; Automatically install required packages from the package manager.
 (use-package markdown-mode
@@ -132,7 +133,6 @@ as input."
 (define-key global-map "\C-ca" 'org-agenda)
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-ck" 'kill-this-buffer)
-(global-whitespace-mode)
 (load-theme 'tango-dark)
 (setq auto-save-default nil)
 (setq backup-inhibited t)
@@ -146,7 +146,7 @@ as input."
 (setq shr-inhibit-images t)
 (setq shr-use-fonts nil)
 (setq track-eol t)
-(setq whitespace-style (delete 'face whitespace-style))
+(setq whitespace-style (quote (space-mark tab-mark newline-mark)))
 (setq x-super-keysym 'meta)
 (setq-default indent-tabs-mode nil)
 (show-paren-mode t)
