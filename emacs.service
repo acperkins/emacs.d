@@ -4,6 +4,7 @@
 
 [Unit]
 Description=Emacs: the extensible, self-documenting text editor
+PartOf=graphical-session.target
 
 [Service]
 Type=forking
