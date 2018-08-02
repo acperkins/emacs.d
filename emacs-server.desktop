@@ -1,0 +1,16 @@
+#!/usr/bin/env xdg-open
+
+# Copy to ~/.config/autostart to load the server at login.
+
+[Desktop Entry]
+Name=Emacs Server
+GenericName=Text Editor
+Exec=emacs --daemon
+Icon=emacs
+Type=Application
+Terminal=false
+Categories=TextEditor;Utility;
+StartupWMClass=Emacs
+Keywords=Text;Editor;
+X-KDE-StartupNotify=false
+
