@@ -149,6 +149,7 @@ as input."
 (setq inhibit-startup-screen t)
 (setq line-move-visual nil)
 (setq org-startup-folded nil)
+(setq org-startup-truncated nil)
 (setq org-log-done 'time)
 (setq shr-inhibit-images t)
 (setq shr-use-fonts nil)
