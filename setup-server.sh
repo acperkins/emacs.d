@@ -7,6 +7,3 @@ mkdir -p $APPLICATION_DIR
 cp emacs.desktop $APPLICATION_DIR/emacs.desktop
 mkdir -p $AUTOSTART_DIR
 cp emacs-server.desktop $AUTOSTART_DIR/emacs.desktop
-pushd $HOME
-emacs --daemon
-popd
