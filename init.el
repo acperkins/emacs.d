@@ -88,36 +88,36 @@ as input."
 (defvar user-temporary-file-directory
   (concat temporary-file-directory user-login-name "/"))
 (make-directory user-temporary-file-directory t)
-(setq backup-by-copying t)
-(setq backup-directory-alist
+(setq backup-by-copying t
+      backup-directory-alist
       `(("." . ,user-temporary-file-directory)
-        (,tramp-file-name-regexp nil)))
-(setq auto-save-list-file-prefix
-      (concat user-temporary-file-directory ".auto-saves-"))
-(setq auto-save-file-name-transforms
+        (,tramp-file-name-regexp nil))
+      auto-save-list-file-prefix
+      (concat user-temporary-file-directory ".auto-saves-")
+      auto-save-file-name-transforms
       `((".*" ,user-temporary-file-directory t)))
 
 ;; Getting Things Done in org-mode.
 ;; Source: <https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html>
 (setq org-agenda-files '("~/Sync/gtd/inbox.org"
                          "~/Nextcloud/gtd/projects.org"
-                         "~/Nextcloud/gtd/reminders.org"))
-(setq org-capture-templates '(("t" "Todo [inbox]" entry
+                         "~/Nextcloud/gtd/reminders.org")
+      org-capture-templates '(("t" "Todo [inbox]" entry
                                (file+headline "~/Nextcloud/gtd/inbox.org" "Tasks")
                                "* TODO %i%?")
                               ("r" "Reminder" entry
                                (file+headline "~/Nextcloud/gtd/reminders.org"
                                               "Reminder")
-                               "* %i%? \n %U")))
-(setq org-refile-targets '(("~/Nextcloud/gtd/inbox.org" :maxlevel . 3)
+                               "* %i%? \n %U"))
+      org-refile-targets '(("~/Nextcloud/gtd/inbox.org" :maxlevel . 3)
                            ("~/Nextcloud/gtd/someday.org" :level . 1)
-                           ("~/Nextcloud/gtd/reminders.org" :maxlevel . 2)))
-(setq org-todo-keywords '((sequence "TODO(t)"
+                           ("~/Nextcloud/gtd/reminders.org" :maxlevel . 2))
+      org-todo-keywords '((sequence "TODO(t)"
                                     "WAITING(w)"
                                     "|"
                                     "DONE(d)"
-                                    "CANCELLED(c)")))
-(setq org-agenda-custom-commands
+                                    "CANCELLED(c)"))
+      org-agenda-custom-commands
       '(("w" "Work" tags-todo "@work"
          ((org-agenda-overriding-header "Work")
           (org-agenda-skip-function
@@ -143,21 +143,21 @@ as input."
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-ck" 'kill-this-buffer)
 (load-theme 'tango-dark)
-(setq auto-save-default nil)
-(setq backup-inhibited t)
-(setq c-default-style "bsd")
-(setq calendar-week-start-day 1)
-(setq default-frame-alist '((cursor-color . "white")))
-(setq inhibit-startup-screen t)
-(setq line-move-visual nil)
-(setq org-startup-folded nil)
-(setq org-startup-truncated nil)
-(setq org-log-done 'time)
-(setq shr-inhibit-images t)
-(setq shr-use-fonts nil)
-(setq track-eol t)
-(setq whitespace-style (quote (space-mark tab-mark newline-mark)))
-(setq x-super-keysym 'meta)
+(setq auto-save-default nil
+      backup-inhibited t
+      c-default-style "bsd"
+      calendar-week-start-day 1
+      default-frame-alist '((cursor-color . "white"))
+      inhibit-startup-screen t
+      line-move-visual nil
+      org-startup-folded nil
+      org-startup-truncated nil
+      org-log-done 'time
+      shr-inhibit-images t
+      shr-use-fonts nil
+      track-eol t
+      whitespace-style (quote (space-mark tab-mark newline-mark))
+      x-super-keysym 'meta)
 (setq-default indent-tabs-mode nil)
 (show-paren-mode t)
 
