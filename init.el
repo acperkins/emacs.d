@@ -30,7 +30,7 @@
   :config
   (ac-config-default))
 (use-package go-autocomplete
-  ; Don't forget to run `go get -u github.com/nsf/gocode`.
+  ; Don't forget to run `go get -u github.com/mdempsky/gocode`.
   :ensure t)
 (use-package jedi
   ; Run (jedi:install-server) if needed
