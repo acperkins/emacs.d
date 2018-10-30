@@ -4,8 +4,8 @@
 
 ;; Set up the Emacs packaging system.
 (require 'package)
-(add-to-list 'package-archives '("melpa-stable"
-  . "http://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" .
+                                 "http://stable.melpa.org/packages/"))
 (setq package-enable-at-startup nil)
 (package-initialize)
 (unless (package-installed-p 'use-package)
@@ -30,12 +30,12 @@
   :config
   (ac-config-default))
 (use-package go-autocomplete
-  ; Don't forget to run `go get -u github.com/mdempsky/gocode`.
-  ; On Debian 9, use the older `go get -u github.com/nsf/gocode`.
+                                        ; Don't forget to run `go get -u github.com/mdempsky/gocode`.
+                                        ; On Debian 9, use the older `go get -u github.com/nsf/gocode`.
   :ensure t)
 (use-package jedi
-  ; Run (jedi:install-server) if needed
-  ; (requires `pip install --user virtualenv`).
+                                        ; Run (jedi:install-server) if needed
+                                        ; (requires `pip install --user virtualenv`).
   :ensure t
   :config
   (add-hook 'python-mode-hook 'jedi:setup)
@@ -126,7 +126,7 @@ as input."
       '(("w" "Work" tags-todo "@work"
          ((org-agenda-overriding-header "Work")
           (org-agenda-skip-function
-          #'my-org-agenda-skip-all-siblings-but-first)))))
+           #'my-org-agenda-skip-all-siblings-but-first)))))
 (defun my-org-agenda-skip-all-siblings-but-first ()
   "Skip all but the first non-done entry."
   (let (should-skip-entry)
@@ -172,4 +172,4 @@ as input."
 ;; section should always be at the end of the file.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (if (file-readable-p (symbol-value 'custom-file))
-  (load custom-file))
+    (load custom-file))
