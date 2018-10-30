@@ -30,12 +30,12 @@
   :config
   (ac-config-default))
 (use-package go-autocomplete
-                                        ; Don't forget to run `go get -u github.com/mdempsky/gocode`.
-                                        ; On Debian 9, use the older `go get -u github.com/nsf/gocode`.
+  ;; Don't forget to run `go get -u github.com/mdempsky/gocode`.
+  ;; On Debian 9, use the older `go get -u github.com/nsf/gocode`.
   :ensure t)
 (use-package jedi
-                                        ; Run (jedi:install-server) if needed
-                                        ; (requires `pip install --user virtualenv`).
+  ;; Run (jedi:install-server) if needed
+  ;; (requires `pip install --user virtualenv`).
   :ensure t
   :config
   (add-hook 'python-mode-hook 'jedi:setup)
