@@ -153,6 +153,7 @@ as input."
       backup-inhibited t
       c-default-style "bsd"
       calendar-week-start-day 1
+      colon-double-space t
       default-frame-alist '((cursor-color . "white"))
       inhibit-startup-screen t
       line-move-visual nil
