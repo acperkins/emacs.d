@@ -1,3 +1,4 @@
+*.el~
 *.elc
 /.python-environments/*
 /ac-comphist.dat
@@ -10,3 +11,4 @@
 /server/*
 /site-lisp/*
 /url/*
+session.*
