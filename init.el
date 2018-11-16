@@ -168,6 +168,7 @@ as input."
 (setq-default indent-tabs-mode nil
               c-basic-offset 4)
 (show-paren-mode t)
+(tool-bar-mode -1)
 
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.
