@@ -157,6 +157,8 @@ as input."
       default-frame-alist '((cursor-color . "white"))
       inhibit-startup-screen t
       line-move-visual nil
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))
       org-startup-folded nil
       org-startup-truncated nil
       org-log-done 'time
