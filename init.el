@@ -153,7 +153,7 @@ as input."
       backup-inhibited t
       c-default-style "bsd"
       calendar-week-start-day 1
-      colon-double-space t
+      colon-double-space nil
       default-frame-alist '((cursor-color . "white"))
       inhibit-startup-screen t
       line-move-visual nil
@@ -162,6 +162,7 @@ as input."
       org-startup-folded nil
       org-startup-truncated nil
       org-log-done 'time
+      sentence-end-double-sapce nil
       shr-inhibit-images t
       shr-use-fonts nil
       track-eol t
