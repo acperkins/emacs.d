@@ -148,6 +148,7 @@ as input."
 (define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-ck" 'kill-this-buffer)
 (load-theme 'tango-dark)
+(put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (setq auto-save-default nil
       backup-inhibited t
