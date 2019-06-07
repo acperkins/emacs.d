@@ -47,7 +47,9 @@
   :config
   (editorconfig-mode 1))
 (use-package writeroom-mode
-  :ensure t)
+  :ensure t
+  :config
+  (setq writeroom-major-modes '(text-mode markdown-mode)))
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
@@ -169,7 +171,6 @@ as input."
       shr-inhibit-images t
       shr-use-fonts nil
       track-eol t
-      writeroom-mode-major-mode '(text-mode markdown-mode)
       whitespace-style '(space-mark tab-mark newline-mark)
       x-super-keysym 'meta)
 (setq-default indent-tabs-mode nil
