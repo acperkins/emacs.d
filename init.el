@@ -104,19 +104,19 @@ as input."
 
 ;; Getting Things Done in org-mode.
 ;; Source: <https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html>
-(setq org-agenda-files '("~/Sync/gtd/inbox.org"
-                         "~/Nextcloud/gtd/projects.org"
-                         "~/Nextcloud/gtd/reminders.org")
+(setq org-agenda-files '("~/data/Nextcloud/gtd/inbox.org"
+                         "~/data/Nextcloud/gtd/projects.org"
+                         "~/data/Nextcloud/gtd/reminders.org")
       org-capture-templates '(("t" "Todo [inbox]" entry
-                               (file+headline "~/Nextcloud/gtd/inbox.org" "Tasks")
+                               (file+headline "~/data/Nextcloud/gtd/inbox.org" "Tasks")
                                "* TODO %i%?")
                               ("r" "Reminder" entry
-                               (file+headline "~/Nextcloud/gtd/reminders.org"
+                               (file+headline "~/data/Nextcloud/gtd/reminders.org"
                                               "Reminder")
                                "* %i%? \n %U"))
-      org-refile-targets '(("~/Nextcloud/gtd/inbox.org" :maxlevel . 3)
-                           ("~/Nextcloud/gtd/someday.org" :level . 1)
-                           ("~/Nextcloud/gtd/reminders.org" :maxlevel . 2))
+      org-refile-targets '(("~/data/Nextcloud/gtd/inbox.org" :maxlevel . 3)
+                           ("~/data/Nextcloud/gtd/someday.org" :level . 1)
+                           ("~/data/Nextcloud/gtd/reminders.org" :maxlevel . 2))
       org-todo-keywords '((sequence "TODO(t)"
                                     "WAITING(w)"
                                     "|"
