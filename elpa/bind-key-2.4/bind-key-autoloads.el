@@ -17,6 +17,13 @@ KEY-NAME may be a vector, in which case it is passed straight to
 spelled-out keystrokes, e.g., \"C-c C-z\". See documentation of
 `edmacro-mode' for details.
 
+COMMAND must be an interactive function or lambda form.
+
+KEYMAP, if present, should be a keymap and not a quoted symbol.
+For example:
+
+  (bind-key \"M-h\" #'some-interactive-function my-mode-map)
+
 If PREDICATE is non-nil, it is a form evaluated to determine when
 a key should be bound. It must return non-nil in such cases.
 Emacs can evaluate this form at any time that it does redisplay
@@ -65,6 +72,10 @@ Display all the personal keybindings defined by `bind-key'.
 \(fn)" t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "bind-key" '("compare-keybindings" "get-binding-description" "bind-key" "personal-keybindings" "override-global-m")))
+
+;;;***
+
+;;;### (autoloads nil nil ("bind-key-pkg.el") (0 0 0 0))
 
 ;;;***
 

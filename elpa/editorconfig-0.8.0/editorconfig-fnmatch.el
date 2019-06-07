@@ -1,9 +1,8 @@
-;;; editorconfig-fnmatch.el --- Glob pattern matching in Emacs lisp
+;;; editorconfig-fnmatch.el --- Glob pattern matching in Emacs lisp  -*- lexical-binding: t -*-
 
-;; Copyright (C) 2011-2017 EditorConfig Team
+;; Copyright (C) 2011-2019 EditorConfig Team
 
 ;; Author: EditorConfig Team <editorconfig@googlegroups.com>
-;; URL: https://github.com/editorconfig/editorconfig-emacs#readme
 
 ;; See
 ;; https://github.com/editorconfig/editorconfig-emacs/graphs/contributors
