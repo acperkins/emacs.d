@@ -167,7 +167,7 @@ as input."
       shr-inhibit-images t
       shr-use-fonts nil
       track-eol t
-      whitespace-style (quote (space-mark tab-mark newline-mark))
+      whitespace-style '(space-mark tab-mark newline-mark)
       x-super-keysym 'meta)
 (setq-default indent-tabs-mode nil
               c-basic-offset 4
