@@ -167,7 +167,7 @@ as input."
       org-startup-folded nil
       org-startup-truncated nil
       org-log-done 'time
-      sentence-end-double-space nil
+      sentence-end-double-space t
       shr-inhibit-images t
       shr-use-fonts nil
       track-eol t
