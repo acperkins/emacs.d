@@ -175,6 +175,7 @@ as input."
       x-super-keysym 'meta)
 (setq-default indent-tabs-mode nil
               c-basic-offset 4
+              fill-column 72
               frame-title-format '("%b"))
 (show-paren-mode t)
 (tool-bar-mode -1)
