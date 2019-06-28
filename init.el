@@ -2,54 +2,11 @@
 ;; Anthony Perkins
 ;; https://git.acperkins.com/acp/emacs.d
 
-;; Set up the Emacs packaging system.
-(require 'package)
-(add-to-list 'package-archives '("melpa-stable" .
-                                 "http://stable.melpa.org/packages/"))
-(setq package-enable-at-startup nil)
-(package-initialize)
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-when-compile (require 'use-package))
-
 ;; Reduce cramp from common keyboard shortcuts.
 (define-key key-translation-map (kbd "<f5>") (kbd "C-u"))
 (define-key key-translation-map (kbd "<f7>") (kbd "C-c"))
 (define-key key-translation-map (kbd "<f8>") (kbd "C-x"))
 (define-key key-translation-map (kbd "<f9>") (kbd "M-x"))
-(global-set-key (kbd "<f6>") 'whitespace-mode)
-
-;; Automatically install required packages from the package manager.
-(use-package markdown-mode
-  :ensure t)
-(use-package go-mode
-  :ensure t)
-(use-package auto-complete
-  :ensure t
-  :config
-  (ac-config-default))
-(use-package go-autocomplete
-  ;; Don't forget to run `go get -u github.com/mdempsky/gocode`.
-  ;; On Debian 9, use the older `go get -u github.com/nsf/gocode`.
-  :ensure t)
-(use-package jedi
-  ;; Run (jedi:install-server) if needed
-  ;; (requires `pip install --user virtualenv`).
-  :ensure t
-  :config
-  (add-hook 'python-mode-hook 'jedi:setup)
-  (setq jedi:complete-on-dot t))
-(use-package powershell
-  :ensure t)
-(use-package editorconfig
-  :ensure t
-  :config
-  (editorconfig-mode 1))
-(use-package writeroom-mode
-  :ensure t
-  :config
-  (setq writeroom-major-modes '(text-mode markdown-mode)))
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
@@ -178,7 +135,6 @@ as input."
               fill-column 78
               frame-title-format '("%b"))
 (show-paren-mode t)
-(tool-bar-mode -1)
 
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.
