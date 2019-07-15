@@ -2,13 +2,13 @@
 ;; Anthony Perkins
 ;; https://git.acperkins.com/acp/emacs.d
 
-;; Reduce cramp from common keyboard shortcuts.
-(define-key key-translation-map (kbd "<f9>") (kbd "M-x"))
-
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
+;; Reduce cramp from common keyboard shortcuts.
+(define-key key-translation-map (kbd "<f9>") (kbd "M-x"))
 
 ;; Prefer UTF-8 encoding for all files.
 (prefer-coding-system 'utf-8)
