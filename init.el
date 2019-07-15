@@ -50,6 +50,9 @@
       auto-save-file-name-transforms
       `((".*" ,user-temporary-file-directory t)))
 
+(when (member "Iosevka Term" (font-family-list))
+  (set-default-font "Iosevka Term Light-12"))
+
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
 (define-key global-map "\C-ck" 'kill-this-buffer)
