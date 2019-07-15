@@ -26,8 +26,7 @@
 ;; Show ISO week numbers in calendar.
 ;; Source: <https://www.emacswiki.org/emacs/CalendarWeekNumbers>
 (copy-face font-lock-constant-face 'calendar-iso-week-face)
-(set-face-attribute 'calendar-iso-week-face nil
-                    :height 0.7)
+(set-face-attribute 'calendar-iso-week-face nil :height 0.7)
 (setq calendar-intermonth-text
       '(propertize
         (format "%2d"
@@ -42,13 +41,9 @@
   (concat temporary-file-directory user-login-name "/"))
 (make-directory user-temporary-file-directory t)
 (setq backup-by-copying t
-      backup-directory-alist
-      `(("." . ,user-temporary-file-directory)
-        (,tramp-file-name-regexp nil))
-      auto-save-list-file-prefix
-      (concat user-temporary-file-directory ".auto-saves-")
-      auto-save-file-name-transforms
-      `((".*" ,user-temporary-file-directory t)))
+      backup-directory-alist `(("." . ,user-temporary-file-directory)(,tramp-file-name-regexp nil))
+      auto-save-list-file-prefix (concat user-temporary-file-directory ".auto-saves-")
+      auto-save-file-name-transforms `((".*" ,user-temporary-file-directory t)))
 
 (when (member "Iosevka Term" (font-family-list))
   (set-default-font "Iosevka Term Light-12"))
