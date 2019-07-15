@@ -45,6 +45,7 @@
       auto-save-list-file-prefix (concat user-temporary-file-directory ".auto-saves-")
       auto-save-file-name-transforms `((".*" ,user-temporary-file-directory t)))
 
+;; Set the default font if available.
 (when (member "Iosevka Term" (font-family-list))
   (set-default-font "Iosevka Term Light-12"))
 
