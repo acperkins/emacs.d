@@ -56,7 +56,7 @@
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
 (define-key global-map "\C-ck" 'kill-this-buffer)
-(load-theme 'tango-dark)
+(load-theme 'tango)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (setq auto-save-default nil
