@@ -49,10 +49,14 @@
 (when (member "Iosevka Term" (font-family-list))
   (set-default-font "Iosevka Term Light-12"))
 
+(if (display-graphic-p)
+    (progn
+      (load-theme 'tango))
+  (load-theme 'tango-dark))
+
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
 (define-key global-map "\C-ck" 'kill-this-buffer)
-(load-theme 'tango)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (setq auto-save-default nil
