@@ -84,6 +84,19 @@
               frame-title-format '("%b"))
 (show-paren-mode t)
 
+;; Add a ruler at the top of the frame.
+(setq-default header-line-format(list " "
+                                      "+" (make-string 7 ?-)
+                                      "+" (make-string 7 ?-)
+                                      "+" (make-string 7 ?-)
+                                      "+" (make-string 7 ?-)
+                                      "+" (make-string 7 ?-)
+                                      "+" (make-string 7 ?-)
+                                      "+" (make-string 7 ?-)
+                                      "+" (make-string 7 ?-)
+                                      "+" (make-string 7 ?-)
+                                      "+----|--"))
+
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
