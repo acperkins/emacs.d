@@ -60,7 +60,7 @@
       c-default-style "bsd"
       calendar-week-start-day 1
       colon-double-space nil
-      default-frame-alist '((cursor-color . "grey"))
+      default-frame-alist '((cursor-color . "black"))
       inhibit-startup-screen t
       line-move-visual nil
       mouse-wheel-progressive-speed nil
