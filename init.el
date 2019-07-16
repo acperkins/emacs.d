@@ -49,9 +49,9 @@
 (when (member "Iosevka Term" (font-family-list))
   (set-default-font "Iosevka Term Light-12"))
 
+;; Use a light theme on the desktop and a dark theme in the terminal.
 (if (display-graphic-p)
-    (progn
-      (load-theme 'tango))
+    (load-theme 'tango)
   (load-theme 'tango-dark))
 
 ;; Main options that don't come under other sections.
