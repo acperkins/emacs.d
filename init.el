@@ -45,14 +45,8 @@
       auto-save-list-file-prefix (concat user-temporary-file-directory ".auto-saves-")
       auto-save-file-name-transforms `((".*" ,user-temporary-file-directory t)))
 
-;; Set the default font if available.
-(when (member "Iosevka Term" (font-family-list))
-  (set-default-font "Iosevka Term Light-12"))
-
-;; Use a light theme on the desktop and a dark theme in the terminal.
-(if (display-graphic-p)
-    (load-theme 'tango)
-  (load-theme 'tango-dark))
+;; Use a light theme.
+(load-theme 'tango)
 
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
@@ -83,6 +77,9 @@
               fill-column 78
               frame-title-format '("%b"))
 (show-paren-mode t)
+
+;; Set the default font if available.
+(add-to-list 'default-frame-alist '(font . "Iosevka Term Light-12"))
 
 ;; Add a ruler at the top of the frame.
 (setq-default header-line-format(list " "
