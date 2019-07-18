@@ -48,8 +48,62 @@
 ;; Use a light theme.
 (load-theme 'tango)
 
+;; Getting Things Done in org-mode.
+;; Source: <https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html>
+;; Requires four files:
+;;    inbox.org
+;;    projects.org
+;;    reminders.org
+;;    someday.org
+;;    archive.org
+(setq org-agenda-files '("~/data/Nextcloud/gtd/inbox.org"
+                         "~/data/Nextcloud/gtd/projects.org"
+                         "~/data/Nextcloud/gtd/reminders.org")
+      org-capture-templates '(("t" "Todo [inbox]" entry
+                               (file+headline "~/data/Nextcloud/gtd/inbox.org"
+                                              "Tasks")
+                               "* TODO %i%?")
+                              ("r" "Reminder" entry
+                               (file+headline "~/data/Nextcloud/gtd/reminders.org"
+                                              "Reminder")
+                               "* %i%? \n %U"))
+      org-refile-targets '(("~/data/Nextcloud/gtd/inbox.org"
+                            :maxlevel . 3)
+                           ("~/data/Nextcloud/gtd/someday.org"
+                            :level . 1)
+                           ("~/data/Nextcloud/gtd/reminders.org"
+                            :maxlevel . 2)
+                           ("~/data/Nextcloud/gtd/archive.org"
+                            :maxlevel . 4))
+      org-todo-keywords '((sequence "TODO(t)"
+                                    "WAITING(w)"
+                                    "|"
+                                    "DONE(d)"
+                                    "CANCELLED(c)"))
+      org-agenda-custom-commands
+      '(("w" "Work" tags-todo "@work"
+         ((org-agenda-overriding-header "Work")
+          (org-agenda-skip-function
+           #'my-org-agenda-skip-all-siblings-but-first)))))
+(defun my-org-agenda-skip-all-siblings-but-first ()
+  "Skip all but the first non-done entry."
+  (let (should-skip-entry)
+    (unless (org-current-is-todo)
+      (setq should-skip-entry t))
+    (save-excursion
+      (while (and (not should-skip-entry) (org-goto-sibling t))
+        (when (org-current-is-todo)
+          (setq should-skip-entry t))))
+    (when should-skip-entry
+      (or (outline-next-heading)
+          (goto-char (point-max))))))
+(defun org-current-is-todo ()
+  (string= "TODO" (org-get-todo-state)))
+
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
+(define-key global-map "\C-ca" 'org-agenda)
+(define-key global-map "\C-cc" 'org-capture)
 (define-key global-map "\C-ck" 'kill-this-buffer)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
