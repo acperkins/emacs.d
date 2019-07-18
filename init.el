@@ -56,9 +56,11 @@
 ;;    reminders.org
 ;;    someday.org
 ;;    archive.org
+;;    mobileorg.org
 (setq org-agenda-files '("~/data/Nextcloud/gtd/inbox.org"
                          "~/data/Nextcloud/gtd/projects.org"
-                         "~/data/Nextcloud/gtd/reminders.org")
+                         "~/data/Nextcloud/gtd/reminders.org"
+                         "~/data/Nextcloud/gtd/mobileorg.org")
       org-capture-templates '(("t" "Todo [inbox]" entry
                                (file+headline "~/data/Nextcloud/gtd/inbox.org"
                                               "Tasks")
@@ -68,7 +70,7 @@
                                               "Reminder")
                                "* %i%? \n %U"))
       org-refile-targets '(("~/data/Nextcloud/gtd/inbox.org"
-                            :maxlevel . 3)
+                            :level . 1)
                            ("~/data/Nextcloud/gtd/someday.org"
                             :level . 1)
                            ("~/data/Nextcloud/gtd/reminders.org"
