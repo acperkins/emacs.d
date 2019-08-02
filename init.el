@@ -148,7 +148,7 @@
                                       "+" (make-string 7 ?-)
                                       "+" (make-string 7 ?-)
                                       "+" (make-string 7 ?-)
-                                      "+----|--"))
+                                      "+-----|-"))
 
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.
