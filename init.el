@@ -135,7 +135,7 @@
 (show-paren-mode t)
 
 ;; Set the default font if available.
-(add-to-list 'default-frame-alist '(font . "Liberation Mono-12"))
+(add-to-list 'default-frame-alist '(font . "Iosevka Term Slab Light-12"))
 
 ;; Add a ruler at the top of the frame.
 (setq-default header-line-format(list "["
