@@ -133,8 +133,8 @@
       track-eol t
       whitespace-style '(space-mark tab-mark newline-mark)
       x-super-keysym 'meta)
-(setq-default indent-tabs-mode nil
-              c-basic-offset 4
+(setq-default indent-tabs-mode t
+              c-basic-offset 8
               fill-column 78
               frame-title-format '("%b"))
 (show-paren-mode t)
