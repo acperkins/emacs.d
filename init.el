@@ -4,6 +4,8 @@
 
 ;; Initialise packages.
 (package-initialize)
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
