@@ -2,6 +2,9 @@
 ;; Anthony Perkins
 ;; https://git.acperkins.com/acp/emacs.d
 
+;; Initialise packages.
+(package-initialize)
+
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
