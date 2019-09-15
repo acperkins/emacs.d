@@ -4,8 +4,13 @@
 
 ;; Initialise packages.
 (package-initialize)
+(add-to-list 'package-archives '("melpa-stable"
+				 . "https://stable.melpa.org/packages/")
+				 t)
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+(autoload 'adoc-mode "adoc-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
