@@ -11,6 +11,8 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (autoload 'adoc-mode "adoc-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
+(autoload 'yaml-mode "yaml-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
 ;; Include any non checked-in packages in the ".emacs.d/site-lisp"
 ;; directory and checked-in packages in the ".emacs.d/lisp" directory.
