@@ -4,9 +4,9 @@
 
 ;; Initialise packages.
 (package-initialize)
-(add-to-list 'package-archives '("melpa-stable"
-				 . "https://stable.melpa.org/packages/")
-				 t)
+(add-to-list 'package-archives '("melpa-stable" .
+                                 "https://stable.melpa.org/packages/")
+             t)
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (autoload 'adoc-mode "adoc-mode" nil t)
@@ -25,16 +25,6 @@
 ;; Prefer UTF-8 encoding for all files.
 (prefer-coding-system 'utf-8)
 
-;; Run the whole buffer through an external command.
-;; Source: <https://www.emacswiki.org/emacs/ExecuteExternalCommand>
-(defun shell-command-on-buffer ()
-  "Asks for a command and executes it in inferior shell with current buffer as input."
-  (interactive)
-  (shell-command-on-region
-   (point-min)(point-max)
-   (read-shell-command "Shell command on buffer: ")
-   nil t))
-
 ;; Show ISO week numbers in calendar.
 ;; Source: <https://www.emacswiki.org/emacs/CalendarWeekNumbers>
 (copy-face font-lock-constant-face 'calendar-iso-week-face)
@@ -47,24 +37,8 @@
                   (calendar-absolute-from-gregorian (list month day year)))))
         'font-lock-face 'font-lock-function-name-face))
 
-;; Save temporary files in the temporary directory.
-;; Source: <https://stackoverflow.com/a/33085>
-(defvar user-temporary-file-directory
-  (concat temporary-file-directory user-login-name "/"))
-(make-directory user-temporary-file-directory t)
-(setq backup-by-copying t
-      backup-directory-alist `(("." . ,user-temporary-file-directory)(,tramp-file-name-regexp nil))
-      auto-save-list-file-prefix (concat user-temporary-file-directory ".auto-saves-")
-      auto-save-file-name-transforms `((".*" ,user-temporary-file-directory t)))
-
-;; Use a light theme.
-(load-theme 'tango)
-
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
-(define-key global-map "\C-ca" 'org-agenda)
-(define-key global-map "\C-cc" 'org-capture)
-(define-key global-map "\C-ck" 'kill-this-buffer)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (setq auto-save-default nil
@@ -80,20 +54,19 @@
       org-startup-folded nil
       org-startup-truncated nil
       org-log-done 'time
-      sentence-end-double-space t
+      sentence-end-double-space nil
       shr-inhibit-images t
       shr-use-fonts nil
       track-eol t
-      whitespace-style '(space-mark tab-mark newline-mark)
+      whitespace-line-column 78
+      whitespace-style '(face lines-tail trailing tabs tab-mark)
       x-super-keysym 'meta)
 (setq-default indent-tabs-mode t
               c-basic-offset 8
               fill-column 78
               frame-title-format '("%b"))
 (show-paren-mode t)
-
-;; Set the default font if available.
-(add-to-list 'default-frame-alist '(font . "Monospace-11"))
+(global-whitespace-mode 1)
 
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.
