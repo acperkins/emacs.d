@@ -46,6 +46,7 @@
       c-default-style "bsd"
       calendar-week-start-day 1
       colon-double-space nil
+      column-number-mode t
       default-frame-alist '((cursor-color . "black"))
       inhibit-startup-screen t
       line-move-visual nil
