@@ -37,6 +37,9 @@
                   (calendar-absolute-from-gregorian (list month day year)))))
         'font-lock-face 'font-lock-function-name-face))
 
+;; Use a light theme.
+(load-theme 'adwaita)
+
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
 (put 'downcase-region 'disabled nil)
