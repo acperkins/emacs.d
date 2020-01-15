@@ -38,7 +38,7 @@
         'font-lock-face 'font-lock-function-name-face))
 
 ;; Use a light theme.
-(load-theme 'adwaita)
+;(load-theme 'adwaita)
 
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
