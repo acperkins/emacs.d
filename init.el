@@ -37,8 +37,8 @@
                   (calendar-absolute-from-gregorian (list month day year)))))
         'font-lock-face 'font-lock-function-name-face))
 
-;; Use a light theme.
-;(load-theme 'adwaita)
+;; Use a theme.
+(load-theme 'tango-dark)
 
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
@@ -50,7 +50,7 @@
       calendar-week-start-day 1
       colon-double-space nil
       column-number-mode t
-      default-frame-alist '((cursor-color . "black"))
+      default-frame-alist '((cursor-color . "white"))
       inhibit-startup-screen t
       line-move-visual nil
       mouse-wheel-progressive-speed nil
