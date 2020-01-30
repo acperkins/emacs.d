@@ -1,6 +1,6 @@
 ;; .emacs.d/init.el
 ;; Anthony Perkins
-;; https://git.acperkins.com/acp/emacs.d
+;; https://code.acperkins.com/acp/emacs.d
 
 ;; Initialise packages.
 (package-initialize)
