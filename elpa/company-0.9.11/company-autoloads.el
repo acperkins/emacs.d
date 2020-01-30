@@ -305,13 +305,6 @@ File paths with spaces are only supported inside strings.
 
 ;;;***
 
-;;;### (autoloads nil "company-tests" "company-tests.el" (0 0 0 0))
-;;; Generated autoloads from company-tests.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "company-tests" '("company-")))
-
-;;;***
-
 ;;;### (autoloads nil "company-tng" "company-tng.el" (0 0 0 0))
 ;;; Generated autoloads from company-tng.el
 
@@ -358,18 +351,18 @@ shadow backends that come after it.  Recommended usages:
 * In a buffer-local value of `company-backends', grouped with a backend or
   several that provide actual text completions.
 
-  (add-hook \\='js-mode-hook
+  (add-hook 'js-mode-hook
             (lambda ()
-              (set (make-local-variable \\='company-backends)
-                   \\='((company-dabbrev-code company-yasnippet)))))
+              (set (make-local-variable 'company-backends)
+                   '((company-dabbrev-code company-yasnippet)))))
 
 * After keyword `:with', grouped with other backends.
 
-  (push \\='(company-semantic :with company-yasnippet) company-backends)
+  (push '(company-semantic :with company-yasnippet) company-backends)
 
 * Not in `company-backends', just bound to a key.
 
-  (global-set-key (kbd \"C-c y\") \\='company-yasnippet)
+  (global-set-key (kbd \"C-c y\") 'company-yasnippet)
 
 \(fn COMMAND &optional ARG &rest IGNORE)" t nil)
 
