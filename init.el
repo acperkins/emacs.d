@@ -38,7 +38,8 @@
         'font-lock-face 'font-lock-function-name-face))
 
 ;; Use a theme.
-(load-theme 'tango-dark)
+;(load-theme 'tango-dark)
+;(setq default-frame-alist '((cursor-color . "white")))
 
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
@@ -50,7 +51,6 @@
       calendar-week-start-day 1
       colon-double-space nil
       column-number-mode t
-      default-frame-alist '((cursor-color . "white"))
       inhibit-startup-screen t
       line-move-visual nil
       mouse-wheel-progressive-speed nil
