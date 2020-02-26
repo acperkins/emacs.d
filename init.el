@@ -54,7 +54,7 @@
       inhibit-startup-screen t
       line-move-visual nil
       mouse-wheel-progressive-speed nil
-      mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil))
+      mouse-wheel-scroll-amount '(4 ((shift) . 1) ((control) . 8))
       org-startup-folded nil
       org-startup-truncated nil
       org-log-done 'time
