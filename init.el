@@ -8,6 +8,8 @@
                                  "https://stable.melpa.org/packages/")
              t)
 (require 'company)
+(require 'company-lsp)
+(push 'company-lsp company-backends)
 (add-hook 'after-init-hook 'global-company-mode)
 (autoload 'adoc-mode "adoc-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
