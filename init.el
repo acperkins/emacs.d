@@ -68,7 +68,7 @@
       shr-use-fonts nil
       track-eol t
       whitespace-line-column 78
-      whitespace-style '(face lines-tail trailing tabs tab-mark)
+      whitespace-style '(face trailing tabs tab-mark)
       x-super-keysym 'meta)
 (setq-default indent-tabs-mode t
               c-basic-offset 8
@@ -77,6 +77,11 @@
 (show-paren-mode t)
 (global-whitespace-mode 1)
 (electric-pair-mode 1)
+
+;; Create a global minor mode for fci-mode.
+(define-globalized-minor-mode global-fci-mode
+fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
 
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.
