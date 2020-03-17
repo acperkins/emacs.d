@@ -76,6 +76,7 @@
               frame-title-format '("%b"))
 (show-paren-mode t)
 (global-whitespace-mode 1)
+(global-visual-line-mode 1)
 (electric-pair-mode 1)
 
 ;; Create a global minor mode for fci-mode.
