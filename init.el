@@ -45,6 +45,7 @@
 ;; Use a theme.
 ;(load-theme 'tango-dark)
 ;(setq default-frame-alist '((cursor-color . "white")))
+(load-theme 'modus-operandi t)
 
 ;; Main options that don't come under other sections.
 (c-set-offset 'arglist-cont-nonempty '4)
