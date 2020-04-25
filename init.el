@@ -68,6 +68,7 @@
       shr-inhibit-images t
       shr-use-fonts nil
       track-eol t
+      visible-bell t
       whitespace-line-column 78
       whitespace-style '(face lines-tail trailing tabs tab-mark)
       x-super-keysym 'meta)
