@@ -80,6 +80,9 @@
 (global-whitespace-mode 1)
 (electric-pair-mode 1)
 
+;; Set up Magit.
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
