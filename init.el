@@ -47,7 +47,7 @@
 (load-theme 'modus-operandi t)
 
 ;; Main options that don't come under other sections.
-(add-to-list 'default-frame-alist '(height . 43))
+(add-to-list 'default-frame-alist '(height . 35))
 (add-to-list 'default-frame-alist '(width . 132))
 (c-set-offset 'arglist-cont-nonempty '4)
 (put 'downcase-region 'disabled nil)
