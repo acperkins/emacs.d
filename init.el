@@ -47,6 +47,8 @@
 (load-theme 'modus-operandi t)
 
 ;; Main options that don't come under other sections.
+(add-to-list 'default-frame-alist '(height . 43))
+(add-to-list 'default-frame-alist '(width . 132))
 (c-set-offset 'arglist-cont-nonempty '4)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -68,12 +70,12 @@
       shr-use-fonts nil
       track-eol t
       visible-bell t
-      whitespace-line-column 78
+      whitespace-line-column 120
       whitespace-style '(face lines-tail trailing tabs tab-mark)
       x-super-keysym 'meta)
 (setq-default indent-tabs-mode t
               c-basic-offset 8
-              fill-column 78
+              fill-column 120
               frame-title-format '("%b"))
 (show-paren-mode t)
 (global-whitespace-mode 1)
