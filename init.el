@@ -70,12 +70,12 @@
       shr-use-fonts nil
       track-eol t
       visible-bell t
-      whitespace-line-column 120
+      whitespace-line-column 100
       whitespace-style '(face lines-tail trailing tabs tab-mark)
       x-super-keysym 'meta)
 (setq-default indent-tabs-mode t
               c-basic-offset 8
-              fill-column 120
+              fill-column 72
               frame-title-format '("%b"))
 (show-paren-mode t)
 (global-whitespace-mode 1)
