@@ -27,6 +27,18 @@
 ;; Reduce cramp from common keyboard shortcuts.
 (define-key key-translation-map (kbd "<f9>") (kbd "M-x"))
 
+;; Assign left-hand keys on a Sun keyboard.
+(global-set-key (kbd "<cancel>"   ) 'keyboard-quit)           ; Stop
+(global-set-key (kbd "<redo>"     ) 'repeat-complex-command)  ; Again
+(global-set-key (kbd "<SunProps>" ) 'describe-function)       ; Props
+(global-set-key (kbd "<undo>"     ) 'undo)                    ; Undo
+(global-set-key (kbd "<SunFront>" ) 'delete-other-windows)    ; Front
+(global-set-key (kbd "<XF86Copy>" ) 'kill-ring-save)          ; Copy
+(global-set-key (kbd "<XF86Open>" ) 'find-file)               ; Open
+(global-set-key (kbd "<XF86Paste>") 'yank)                    ; Paste
+(global-set-key (kbd "<find>"     ) 'search-forward)          ; Find
+(global-set-key (kbd "<XF86Cut>"  ) 'kill-region)             ; Cut
+
 ;; Prefer UTF-8 encoding for all files.
 (prefer-coding-system 'utf-8)
 
