@@ -36,7 +36,7 @@
 (global-set-key (kbd "<XF86Copy>" ) 'kill-ring-save)          ; Copy
 (global-set-key (kbd "<XF86Open>" ) 'find-file)               ; Open
 (global-set-key (kbd "<XF86Paste>") 'yank)                    ; Paste
-(global-set-key (kbd "<find>"     ) 'search-forward)          ; Find
+(global-set-key (kbd "<find>"     ) 'isearch-forward)         ; Find
 (global-set-key (kbd "<XF86Cut>"  ) 'kill-region)             ; Cut
 
 ;; Prefer UTF-8 encoding for all files.
