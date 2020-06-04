@@ -4,8 +4,9 @@
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; URL: https://gitlab.com/protesilaos/modus-themes
-;; Package-Version: 0.8.1
-;; Version: 0.8.1
+;; Package-Version: 0.9.0
+;; Package-Commit: 3406e29e82a135292200b993dc30f5d45aed26a3
+;; Version: 0.9.0
 ;; Package-Requires: ((emacs "26.1"))
 ;; Keywords: faces, theme, accessibility
 
@@ -50,6 +51,8 @@
 ;;     modus-operandi-theme-distinct-org-blocks
 ;;     modus-operandi-theme-3d-modeline
 ;;     modus-operandi-theme-subtle-diffs
+;;     modus-operandi-theme-intense-standard-completions
+;;     modus-operandi-theme-override-colors-alist
 ;;
 ;; The default scale is as follows (it can be customised as well):
 ;;
@@ -57,6 +60,7 @@
 ;;     modus-operandi-theme-scale-2 1.1
 ;;     modus-operandi-theme-scale-3 1.15
 ;;     modus-operandi-theme-scale-4 1.2
+;;     modus-operandi-theme-scale-5 1.3
 ;;
 ;; What follows is the list of explicitly supported packages or face
 ;; groups (there are implicitly supported packages as well, which
@@ -83,6 +87,7 @@
 ;;     centaur-tabs
 ;;     change-log and log-view (`vc-print-log' and `vc-print-root-log')
 ;;     cider
+;;     circe
 ;;     color-rg
 ;;     column-enforce-mode
 ;;     company-mode
@@ -121,6 +126,7 @@
 ;;     ebdb
 ;;     ediff
 ;;     eglot
+;;     el-search
 ;;     eldoc-box
 ;;     elfeed
 ;;     elfeed-score
@@ -129,6 +135,7 @@
 ;;     epa
 ;;     equake
 ;;     erc
+;;     eros
 ;;     ert
 ;;     eshell
 ;;     evil (evil-mode)
@@ -158,6 +165,7 @@
 ;;     git-timemachine
 ;;     git-walktree
 ;;     gnus
+;;     golden-ratio-scroll-screen
 ;;     helm
 ;;     helm-ls-git
 ;;     helm-switch-shell
@@ -166,6 +174,7 @@
 ;;     highlight-blocks
 ;;     highlight-defined
 ;;     highlight-escape-sequences (`hes-mode')
+;;     highlight-indentation
 ;;     highlight-numbers
 ;;     highlight-symbol
 ;;     highlight-thing
@@ -173,12 +182,14 @@
 ;;     hl-line-mode
 ;;     hl-todo
 ;;     hydra
+;;     hyperlist
 ;;     ibuffer
 ;;     icomplete
 ;;     ido-mode
 ;;     iedit
 ;;     iflipb
 ;;     imenu-list
+;;     indium
 ;;     info
 ;;     info-colors
 ;;     interaction-log
@@ -187,6 +198,7 @@
 ;;     ivy
 ;;     ivy-posframe
 ;;     jira (org-jira)
+;;     journalctl-mode
 ;;     js2-mode
 ;;     julia
 ;;     jupyter
@@ -202,6 +214,7 @@
 ;;     markup-faces (`adoc-mode')
 ;;     mentor
 ;;     messages
+;;     minimap
 ;;     modeline
 ;;     mood-line
 ;;     mu4e
@@ -210,6 +223,7 @@
 ;;     neotree
 ;;     no-emoji
 ;;     num3-mode
+;;     nxml-mode
 ;;     orderless
 ;;     org
 ;;     org-journal
@@ -278,6 +292,7 @@
 ;;     undo-tree
 ;;     vc (built-in mode line status for version control)
 ;;     vc-annotate (C-x v g)
+;;     vdiff
 ;;     vimish-fold
 ;;     visible-mark
 ;;     visual-regexp
@@ -297,6 +312,7 @@
 ;;     xref
 ;;     xterm-color (and ansi-colors)
 ;;     yaml-mode
+;;     yasnippet
 ;;     ztree
 
 ;;; Code:
@@ -396,19 +412,58 @@ between foreground and background is >= 7:1)."
   :type 'boolean)
 
 (defcustom modus-operandi-theme-scale-1 1.05
-  "Font size that is slightly larger than the base value."
+  "Font size that is slightly larger than the base value.
+The default is a floating point that is interpreted as a multiple
+of the base font size.  However, the variable also accepts an
+integer, understood as an absolute height (e.g. a value of 140 is
+the same as setting the font at 14 point size).
+
+For more on the matter, read the documentation of
+`set-face-attribute', specifically the ':height' section."
   :type 'number)
 
 (defcustom modus-operandi-theme-scale-2 1.1
-  "Font size slightly larger than `modus-operandi-theme-scale-1'."
+  "Font size slightly larger than `modus-operandi-theme-scale-1'.
+The default is a floating point that is interpreted as a multiple
+of the base font size.  However, the variable also accepts an
+integer, understood as an absolute height (e.g. a value of 140 is
+the same as setting the font at 14 point size).
+
+For more on the matter, read the documentation of
+`set-face-attribute', specifically the ':height' section."
   :type 'number)
 
 (defcustom modus-operandi-theme-scale-3 1.15
-  "Font size slightly larger than `modus-operandi-theme-scale-2'."
+  "Font size slightly larger than `modus-operandi-theme-scale-2'.
+The default is a floating point that is interpreted as a multiple
+of the base font size.  However, the variable also accepts an
+integer, understood as an absolute height (e.g. a value of 140 is
+the same as setting the font at 14 point size).
+
+For more on the matter, read the documentation of
+`set-face-attribute', specifically the ':height' section."
   :type 'number)
 
 (defcustom modus-operandi-theme-scale-4 1.2
-  "Font size slightly larger than `modus-operandi-theme-scale-3'."
+  "Font size slightly larger than `modus-operandi-theme-scale-3'.
+The default is a floating point that is interpreted as a multiple
+of the base font size.  However, the variable also accepts an
+integer, understood as an absolute height (e.g. a value of 140 is
+the same as setting the font at 14 point size).
+
+For more on the matter, read the documentation of
+`set-face-attribute', specifically the ':height' section."
+  :type 'number)
+
+(defcustom modus-operandi-theme-scale-5 1.3
+  "Font size slightly larger than `modus-operandi-theme-scale-4'.
+The default is a floating point that is interpreted as a multiple
+of the base font size.  However, the variable also accepts an
+integer, understood as an absolute height (e.g. a value of 140 is
+the same as setting the font at 14 point size).
+
+For more on the matter, read the documentation of
+`set-face-attribute', specifically the ':height' section."
   :type 'number)
 
 (defcustom modus-operandi-theme-visible-fringes nil
@@ -427,12 +482,15 @@ between foreground and background is >= 7:1)."
   "Use fewer/dim backgrounds in `diff-mode', `ediff',`magit'."
   :type 'boolean)
 
+(defcustom modus-operandi-theme-intense-standard-completions nil
+  "Use prominent backgrounds for Icomplete, Ido, or similar."
+  :type 'boolean)
+
 ;; Helper functions that are meant to ease the implementation of the
 ;; above customisation options.
 (defun modus-operandi-theme-heading-foreground (subtle rainbow)
   "Apply foreground value to headings.
-SUBTLE is the default aesthetic.
-RAINBOW is the saturated one."
+SUBTLE is the default aesthetic.  RAINBOW is the saturated one."
   (if modus-operandi-theme-rainbow-headings
       (list :foreground rainbow)
     (list :foreground subtle)))
@@ -441,14 +499,15 @@ RAINBOW is the saturated one."
   "Conditionally extend heading styles.
 Apply BG to background and FG to overline."
   (if modus-operandi-theme-section-headings
-      (list :background bg :overline fg)
+      (append
+       (and (>= emacs-major-version 27) '(:extend t))
+       (list :background bg :overline fg))
     (list :background nil :overline nil)))
 
 (defun modus-operandi-theme-org-todo-block (bgbox fgbox fg)
   "Conditionally extend the styles of Org keywords.
-BGBOX applies to the background.
-FGBOX applies to the foreground and the border.
-FG is used when no block style is in effect."
+BGBOX applies to the background.  FGBOX applies to the foreground
+and the border.  FG is used when no block style is in effect."
   (if modus-operandi-theme-section-headings
       (list :background bgbox :foreground fgbox :box (list :color fgbox))
     (list :foreground fg)))
@@ -463,10 +522,10 @@ blocks the same background as the rest of the buffer."
 
 (defun modus-operandi-theme-modeline-box (col3d col &optional btn int)
   "Control the box properties of the mode line.
-COL3D is the border that is intended for the three-dimensional modeline.
-COL applies to the two-dimensional modeline.
-Optional BTN provides the 3d button style.
-Optional INT defines a border width."
+COL3D is the border that is intended for the three-dimensional
+modeline.  COL applies to the two-dimensional modeline.  Optional
+BTN provides the 3d button style.  Optional INT defines a border
+width."
   (let* ((style (if btn 'released-button nil))
          (int (if int int 1)))
     (if modus-operandi-theme-3d-modeline
@@ -475,9 +534,9 @@ Optional INT defines a border width."
 
 (defun modus-operandi-theme-modeline-props (bg3d fg3d &optional bg fg)
   "Control the background and foreground of the mode line.
-BG is the modeline's background.
-FG is the modeline's foreground.
-BG3D and FG3D apply to the three-dimensional modeline style."
+BG is the modeline's background.  FG is the modeline's
+foreground.  BG3D and FG3D apply to the three-dimensional
+modeline style."
   (if modus-operandi-theme-3d-modeline
       (list :background bg3d :foreground fg3d)
     (list :background bg :foreground fg)))
@@ -485,13 +544,24 @@ BG3D and FG3D apply to the three-dimensional modeline style."
 (defun modus-operandi-theme-diffs (subtle-bg subtle-fg intense-bg intense-fg)
   "Colour combinations for `modus-operandi-theme-subtle-diffs'.
 
-SUBTLE-BG should be similar or the same as the main background
-SUBTLE-FG should be an appropriate accent value
-INTENSE-BG should be one of the dedicated backgrounds for diffs
-INTENSE-FG should be one of the dedicated foregrounds for diffs"
+SUBTLE-BG should be similar or the same as the main background.
+SUBTLE-FG should be an appropriate accent value.  INTENSE-BG
+should be one of the dedicated backgrounds for diffs.  INTENSE-FG
+should be one of the dedicated foregrounds for diffs"
   (if modus-operandi-theme-subtle-diffs
       (list :background subtle-bg :foreground subtle-fg)
     (list :background intense-bg :foreground intense-fg)))
+
+(defun modus-operandi-theme-completions (subtle-fg intense-bg intense-fg)
+  "Combinations for `modus-operandi-theme-intense-standard-completions'.
+
+SUBTLE-FG should be an appropriate accent value.  INTENSE-BG
+should be one of the accented backgrounds.  INTENSE-FG should be
+one of the foreground intended to be combined with the
+aforementioned background."
+  (if modus-operandi-theme-intense-standard-completions
+      (list :background intense-bg :foreground intense-fg)
+    (list :foreground subtle-fg)))
 
 (defun modus-operandi-theme-scale (amount)
   "Scale heading by AMOUNT.
@@ -500,102 +570,105 @@ AMOUNT is a customisation option."
   (when modus-operandi-theme-scale-headings
     (list :height amount)))
 
-
-
 ;; Define colour palette.  Each colour must have a >= 7:1 contrast
 ;; ratio relative to the foreground/background colour it is rendered
 ;; against.
-(let ((class '((class color) (min-colors 89)))
-      (fg-main "#000000") (bg-main "#ffffff")
-      (fg-alt "#505050") (bg-alt "#f3f1f3")
-      (fg-dim "#282828") (bg-dim "#f8f8f8")
+;;
+;; The design of the colour palette and of the macro that maps it to
+;; faces is copied from zenbern-theme.el from commit 7dd7968:
+;; https://github.com/bbatsov/zenburn-emacs
+(eval-when-compile
+  (defvar modus-operandi-theme-default-colors-alist
+    '(;; base values
+      ("bg-main" . "#ffffff") ("fg-main" . "#000000")
+      ("bg-alt" . "#f0f0f0") ("fg-alt" . "#505050")
+      ("bg-dim" . "#f8f8f8") ("fg-dim" . "#282828")
       ;; specifically for on/off states (e.g. `mode-line')
       ;;
       ;; must be combined with themselves
-      (fg-active "#191919") (bg-active "#e0e0e0")
-      (fg-inactive "#424242") (bg-inactive "#efedef")
+      ("bg-active" . "#e0e0e0") ("fg-active" . "#191919")
+      ("bg-inactive" . "#efedef") ("fg-inactive" . "#424242")
       ;; special base values, used only for cases where the above
       ;; fg-* or bg-* cannot or should not be used (to avoid confusion)
       ;; must be combined with: {fg,bg}-{main,alt,dim}
-      (fg-special-cold "#093060") (bg-special-cold "#dde3f4")
-      (fg-special-mild "#184034") (bg-special-mild "#c4ede0")
-      (fg-special-warm "#5d3026") (bg-special-warm "#f0e0d4")
-      (fg-special-calm "#61284f") (bg-special-calm "#f8ddea")
+      ("bg-special-cold" . "#dde3f4") ("fg-special-cold" . "#093060")
+      ("bg-special-mild" . "#c4ede0") ("fg-special-mild" . "#184034")
+      ("bg-special-warm" . "#f0e0d4") ("fg-special-warm" . "#5d3026")
+      ("bg-special-calm" . "#f8ddea") ("fg-special-calm" . "#61284f")
       ;; styles for the main constructs
       ;;
       ;; must be combined with: `bg-main', `bg-alt', `bg-dim'
-      (red "#a80000") (green "#005f00")
-      (yellow "#8b3800") (blue "#0030a6")
-      (magenta "#721045") (cyan "#005589")
+      ("red" . "#a60000") ("green" . "#005e00")
+      ("yellow" . "#813e00") ("blue" . "#0030a6")
+      ("magenta" . "#721045") ("cyan" . "#00538b")
       ;; styles for common, but still specialised constructs
       ;;
       ;; must be combined with: `bg-main', `bg-alt', `bg-dim'
-      (red-alt "#972500") (green-alt "#305c00")
-      (yellow-alt "#714900") (blue-alt "#223fbf")
-      (magenta-alt "#8f0075") (cyan-alt "#185870")
+      ("red-alt" . "#972500") ("green-alt" . "#315b00")
+      ("yellow-alt" . "#70480f") ("blue-alt" . "#223fbf")
+      ("magenta-alt" . "#8f0075") ("cyan-alt" . "#30517f")
       ;; same purpose as above, just slight differences
       ;;
       ;; must be combined with: `bg-main', `bg-alt', `bg-dim'
-      (red-alt-other "#a0132f") (green-alt-other "#095f1c")
-      (yellow-alt-other "#804000") (blue-alt-other "#0000bb")
-      (magenta-alt-other "#5317ac") (cyan-alt-other "#005a68")
+      ("red-alt-other" . "#a0132f") ("green-alt-other" . "#145c33")
+      ("yellow-alt-other" . "#863927") ("blue-alt-other" . "#0000bb")
+      ("magenta-alt-other" . "#5317ac") ("cyan-alt-other" . "#005a5f")
       ;; styles for elements that should be very subtle
       ;;
       ;; must be combined with: `bg-main', `bg-alt', `bg-dim'
-      (red-nuanced "#4d0006") (green-nuanced "#003000")
-      (yellow-nuanced "#3a2a00") (blue-nuanced "#001170")
-      (magenta-nuanced "#381050") (cyan-nuanced "#003434")
+      ("red-nuanced" . "#4d0006") ("green-nuanced" . "#003000")
+      ("yellow-nuanced" . "#3a2a00") ("blue-nuanced" . "#001170")
+      ("magenta-nuanced" . "#381050") ("cyan-nuanced" . "#003434")
       ;; styles for slightly accented background
       ;;
       ;; must be combined with any of the above foreground values
-      (red-nuanced-bg "#fef2f2") (green-nuanced-bg "#f4faf4")
-      (yellow-nuanced-bg "#fcf6f1") (blue-nuanced-bg "#f4f4ff")
-      (magenta-nuanced-bg "#fff4fc") (cyan-nuanced-bg "#f0f6fa")
+      ("red-nuanced-bg" . "#fef2f2") ("green-nuanced-bg" . "#f4faf4")
+      ("yellow-nuanced-bg" . "#fcf6f1") ("blue-nuanced-bg" . "#f4f4ff")
+      ("magenta-nuanced-bg" . "#fff4fc") ("cyan-nuanced-bg" . "#f0f6fa")
       ;; styles for elements that should draw attention to themselves
       ;;
       ;; must be combined with: `bg-main'
-      (red-intense "#b60000") (green-intense "#006800")
-      (yellow-intense "#904200") (blue-intense "#1111ee")
-      (magenta-intense "#7000e0") (cyan-intense "#205b93")
+      ("red-intense" . "#b60000") ("green-intense" . "#006800")
+      ("yellow-intense" . "#904200") ("blue-intense" . "#1111ee")
+      ("magenta-intense" . "#7000e0") ("cyan-intense" . "#205b93")
       ;; styles for background elements that should be visible yet
       ;; subtle
       ;;
       ;; must be combined with: `fg-dim'
-      (red-subtle-bg "#f2b0a2") (green-subtle-bg "#aecf90")
-      (yellow-subtle-bg "#e4c340") (blue-subtle-bg "#b5d0ff")
-      (magenta-subtle-bg "#f0d3ff") (cyan-subtle-bg "#c0efff")
+      ("red-subtle-bg" . "#f2b0a2") ("green-subtle-bg" . "#aecf90")
+      ("yellow-subtle-bg" . "#e4c340") ("blue-subtle-bg" . "#b5d0ff")
+      ("magenta-subtle-bg" . "#f0d3ff") ("cyan-subtle-bg" . "#c0efff")
       ;; styles for background elements that should be visible and
       ;; distinguishable
       ;;
       ;; must be combined with: `fg-main'
-      (red-intense-bg "#ff8892") (green-intense-bg "#5ada88")
-      (yellow-intense-bg "#f5df23") (blue-intense-bg "#6aaeff")
-      (magenta-intense-bg "#d5baff") (cyan-intense-bg "#42cbd4")
-      ;; styles for refined git diffs and other contexts where both the
-      ;; foreground and the background need to have the same/similar hue
+      ("red-intense-bg" . "#ff8892") ("green-intense-bg" . "#5ada88")
+      ("yellow-intense-bg" . "#f5df23") ("blue-intense-bg" . "#6aaeff")
+      ("magenta-intense-bg" . "#d5baff") ("cyan-intense-bg" . "#42cbd4")
+      ;; styles for refined contexts where both the foreground and the
+      ;; background need to have the same/similar hue
       ;;
       ;; must be combined with themselves OR the foregrounds can be
       ;; combined with any of the base backgrounds
-      (red-refine-bg "#ffcccc") (green-refine-bg "#aceaac")
-      (yellow-refine-bg "#fff29a") (blue-refine-bg "#8ac7ff")
-      (magenta-refine-bg "#ffccff") (cyan-refine-bg "#8eecf4")
-      (red-refine-fg "#780000") (green-refine-fg "#004c00")
-      (yellow-refine-fg "#604000") (blue-refine-fg "#002288")
-      (magenta-refine-fg "#770077") (cyan-refine-fg "#004850")
+      ("red-refine-bg" . "#ffcccc") ("red-refine-fg" . "#780000")
+      ("green-refine-bg" . "#aceaac") ("green-refine-fg" . "#004c00")
+      ("yellow-refine-bg" . "#fff29a") ("yellow-refine-fg" . "#604000")
+      ("blue-refine-bg" . "#8ac7ff") ("blue-refine-fg" . "#002288")
+      ("magenta-refine-bg" . "#ffccff") ("magenta-refine-fg" . "#770077")
+      ("cyan-refine-bg" . "#8eecf4") ("cyan-refine-fg" . "#004850")
       ;; styles that are meant exclusively for the mode line
       ;;
       ;; must be combined with: `bg-active', `bg-inactive'
-      (red-active "#930000") (green-active "#005300")
-      (yellow-active "#703700") (blue-active "#0033c0")
-      (magenta-active "#6320a0") (cyan-active "#004882")
+      ("red-active" . "#930000") ("green-active" . "#005300")
+      ("yellow-active" . "#703700") ("blue-active" . "#0033c0")
+      ("magenta-active" . "#6320a0") ("cyan-active" . "#004882")
       ;; styles that are meant exclusively for the fringes
       ;;
       ;; must have a minimum contrast ratio of 1.5:1 with `bg-inactive'
       ;; and be combined with `fg-main' or `fg-dim'
-      (red-fringe-bg "#ff9a9a") (green-fringe-bg "#86cf86")
-      (yellow-fringe-bg "#e0c050") (blue-fringe-bg "#82afff")
-      (magenta-fringe-bg "#f0a3ff") (cyan-fringe-bg "#00d6e0")
-
+      ("red-fringe-bg" . "#ff9a9a") ("green-fringe-bg" . "#86cf86")
+      ("yellow-fringe-bg" . "#e0c050") ("blue-fringe-bg" . "#82afff")
+      ("magenta-fringe-bg" . "#f0a3ff") ("cyan-fringe-bg" . "#00d6e0")
       ;; styles reserved for specific faces
       ;;
       ;; `bg-hl-line' is between `bg-dim' and `bg-alt', so it should
@@ -608,6 +681,9 @@ AMOUNT is a customisation option."
       ;; `bg-paren-match', `bg-region' and `bg-tab-active' must be
       ;; combined with `fg-main', while `bg-tab-inactive' should be
       ;; combined with `fg-dim'
+      ;;
+      ;; `bg-tab-bar' is only intended for the bar that holds the tabs and
+      ;; can only be combined with `fg-main'
       ;;
       ;; `fg-tab-active' is meant to be combined with `bg-tab-active',
       ;; though only for styling special elements, such as underlining
@@ -627,66 +703,84 @@ AMOUNT is a customisation option."
       ;; the window divider colours apply to faces with just an fg value
       ;;
       ;; all pairs are combinable with themselves
-      (bg-hl-line "#f1f2f6")
-      (bg-paren-match "#efcabf")
-      (bg-region "#bcbcbc")
+      ("bg-hl-line" . "#f2eff3")
+      ("bg-paren-match" . "#efcabf")
+      ("bg-region" . "#bcbcbc")
 
-      (bg-tab-active "#ababab")
-      (bg-tab-inactive "#dadada")
-      (fg-tab-active "#000077")
+      ("bg-tab-bar" . "#d5d5d5")
+      ("bg-tab-active" . "#f6f6f6")
+      ("bg-tab-inactive" . "#bdbdbd")
+      ("fg-tab-active" . "#30169e")
 
-      (fg-escape-char-construct "#8b1030")
-      (fg-escape-char-backslash "#644f00")
+      ("fg-escape-char-construct" . "#8b1030")
+      ("fg-escape-char-backslash" . "#654d0f")
 
-      (fg-lang-error "#9f004f")
-      (fg-lang-warning "#605000")
-      (fg-lang-note "#4040ae")
+      ("fg-lang-error" . "#9f004f")
+      ("fg-lang-warning" . "#604f0f")
+      ("fg-lang-note" . "#4040ae")
 
-      (fg-window-divider-inner "#888888")
-      (fg-window-divider-outer "#585858")
+      ("fg-window-divider-inner" . "#888888")
+      ("fg-window-divider-outer" . "#585858")
 
-      (fg-unfocused "#56576d")
+      ("fg-unfocused" . "#56576d")
 
-      (fg-header "#2a2a2a") (bg-header "#e5e5e5")
-      (fg-whitespace "#645060") (bg-whitespace "#fff8fc")
+      ("bg-header" . "#e5e5e5") ("fg-header" . "#2a2a2a")
 
-      (fg-diff-heading "#043355") (bg-diff-heading "#b7c2dd")
-      (fg-diff-added "#004500") (bg-diff-added "#d4fad4")
-      (fg-diff-changed "#524200") (bg-diff-changed "#fcefcf")
-      (fg-diff-removed "#691616") (bg-diff-removed "#ffe8ef")
+      ("bg-whitespace" . "#fff8fc") ("fg-whitespace" . "#645060")
 
-      (fg-diff-refine-added "#002a00") (bg-diff-refine-added "#94cf94")
-      (fg-diff-refine-changed "#302010") (bg-diff-refine-changed "#cccf8f")
-      (fg-diff-refine-removed "#400000") (bg-diff-refine-removed "#daa2b0")
+      ("bg-diff-heading" . "#b7c2dd") ("fg-diff-heading" . "#043355")
+      ("bg-diff-added" . "#d4fad4") ("fg-diff-added" . "#004500")
+      ("bg-diff-changed" . "#fcefcf") ("fg-diff-changed" . "#524200")
+      ("bg-diff-removed" . "#ffe8ef") ("fg-diff-removed" . "#691616")
 
-      (fg-diff-focus-added "#002c00") (bg-diff-focus-added "#bbeabb")
-      (fg-diff-focus-changed "#392900") (bg-diff-focus-changed "#ecdfbf")
-      (fg-diff-focus-removed "#4a0000") (bg-diff-focus-removed "#efcbcf")
+      ("bg-diff-refine-added" . "#94cf94") ("fg-diff-refine-added" . "#002a00")
+      ("bg-diff-refine-changed" . "#cccf8f") ("fg-diff-refine-changed" . "#302010")
+      ("bg-diff-refine-removed" . "#daa2b0") ("fg-diff-refine-removed" . "#400000")
 
-      (fg-diff-neutral-0 "#040404") (bg-diff-neutral-0 "#979797")
-      (fg-diff-neutral-1 "#252525") (bg-diff-neutral-1 "#b0b0b0")
-      (fg-diff-neutral-2 "#3a3a3a") (bg-diff-neutral-2 "#cccccc")
+      ("bg-diff-focus-added" . "#bbeabb") ("fg-diff-focus-added" . "#002c00")
+      ("bg-diff-focus-changed" . "#ecdfbf") ("fg-diff-focus-changed" . "#392900")
+      ("bg-diff-focus-removed" . "#efcbcf") ("fg-diff-focus-removed" . "#4a0000")
 
-      (fg-mark "#005040") (bg-mark "#a0f0cf")
-      (fg-mark-del "#840040") (bg-mark-del "#ffccbb")
-      (fg-mark-other "#782900") (bg-mark-other "#f5d88f")
+      ("bg-diff-neutral-0" . "#979797") ("fg-diff-neutral-0" . "#040404")
+      ("bg-diff-neutral-1" . "#b0b0b0") ("fg-diff-neutral-1" . "#252525")
+      ("bg-diff-neutral-2" . "#cccccc") ("fg-diff-neutral-2" . "#3a3a3a")
 
-      ;; conditional styles that evaluate user-facing customisation
-      ;; options
-      (modus-theme-slant
-       (if modus-operandi-theme-slanted-constructs
-           'italic
-         'normal))
+      ("bg-mark" . "#a0f0cf") ("fg-mark" . "#005040")
+      ("bg-mark-del" . "#ffccbb") ("fg-mark-del" . "#840040")
+      ("bg-mark-other" . "#f5d88f") ("fg-mark-other" . "#782900"))
+    "The entire palette of `modus-operandi-theme'.
+Each element has the form (NAME . HEX).")
 
-      (modus-theme-bold
-       (if modus-operandi-theme-bold-constructs
-           'bold
-         'normal))
+  (defcustom modus-operandi-theme-override-colors-alist '()
+    "Place to override default theme colors.
+You can override a subset of the theme's default colors by
+defining them in this alist."
+    :type '(alist
+            :key-type (string :tag "Name")
+            :value-type (string :tag " Hex")))
 
-      (modus-theme-variable-pitch
-       (if modus-operandi-theme-proportional-fonts
-           'variable-pitch
-         'default)))
+  (defmacro modus-operandi-theme-with-color-variables (&rest body)
+    "`let' bind all colours around BODY.
+Also bind `class' to ((class color) (min-colors 89))."
+    (declare (indent 0))
+    `(let ((class '((class color) (min-colors 89)))
+           ,@(mapcar (lambda (cons)
+                       (list (intern (car cons)) (cdr cons)))
+                     (append modus-operandi-theme-default-colors-alist
+                             modus-operandi-theme-override-colors-alist))
+           ;; conditional styles that evaluate user-facing customisation
+           ;; options
+           (modus-theme-slant
+            (if modus-operandi-theme-slanted-constructs 'italic 'normal))
+           (modus-theme-bold
+            (if modus-operandi-theme-bold-constructs 'bold 'normal))
+           (modus-theme-variable-pitch
+            (if modus-operandi-theme-proportional-fonts 'variable-pitch 'default)))
+       ,@body)))
+
+
+
+(modus-operandi-theme-with-color-variables
   (custom-theme-set-faces
    'modus-operandi
    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -767,7 +861,7 @@ AMOUNT is a customisation option."
    `(italic ((,class (:foreground ,fg-special-cold :slant italic))))
    `(nobreak-hyphen ((,class (:foreground ,fg-escape-char-construct))))
    `(nobreak-space ((,class (:foreground ,fg-escape-char-construct :underline t))))
-   `(minibuffer-prompt ((,class (:foreground ,cyan-alt))))
+   `(minibuffer-prompt ((,class (:foreground ,cyan-alt-other))))
    `(mm-command-output ((,class (:foreground ,red-alt-other))))
    `(mm-uu-extract ((,class (:background ,bg-dim :foreground ,fg-special-mild))))
    `(next-error ((,class (:inherit modus-theme-subtle-red))))
@@ -963,13 +1057,13 @@ AMOUNT is a customisation option."
    `(cfw:face-toolbar-button-on ((,class (:background ,bg-main :foreground ,blue-intense :weight bold))))
    ;;;; centaur-tabs
    `(centaur-tabs-active-bar-face ((,class (:background ,fg-tab-active))))
-   `(centaur-tabs-close-mouse-face ((,class (:underline t))))
+   `(centaur-tabs-close-mouse-face ((,class (:foreground ,red-active :weight bold :underline t))))
    `(centaur-tabs-close-selected ((,class (:inherit centaur-tabs-selected))))
    `(centaur-tabs-close-unselected ((,class (:inherit centaur-tabs-unselected))))
    `(centaur-tabs-modified-marker-selected ((,class (:inherit centaur-tabs-selected))))
    `(centaur-tabs-modified-marker-unselected ((,class (:inherit centaur-tabs-unselected))))
    `(centaur-tabs-default ((,class (:background ,bg-main :foreground ,bg-main))))
-   `(centaur-tabs-selected ((,class (:background ,bg-tab-active :foreground ,fg-main))))
+   `(centaur-tabs-selected ((,class (:background ,bg-tab-active :foreground ,fg-main :weight bold))))
    `(centaur-tabs-selected-modified ((,class (:background ,bg-tab-active :foreground ,fg-main :slant italic))))
    `(centaur-tabs-unselected ((,class (:background ,bg-tab-inactive :foreground ,fg-dim))))
    `(centaur-tabs-unselected-modified ((,class (:background ,bg-tab-inactive :foreground ,fg-dim :slant italic))))
@@ -1021,6 +1115,14 @@ AMOUNT is a customisation option."
    `(cider-test-success-face ((,class (:inherit modus-theme-intense-green))))
    `(cider-traced-face ((,class (:box (:line-width -1 :color ,cyan :style nil) :background ,bg-dim))))
    `(cider-warning-highlight-face ((,class (:foreground ,yellow :underline t))))
+   ;;;; circe (and lui)
+   `(circe-fool-face ((,class (:foreground ,fg-alt))))
+   `(circe-highlight-nick-face ((,class (:foreground ,blue :weight bold))))
+   `(circe-prompt-face ((,class (:foreground ,cyan-alt-other :weight bold))))
+   `(circe-server-face ((,class (:foreground ,fg-unfocused))))
+   `(lui-button-face ((,class (:foreground ,blue :underline t))))
+   `(lui-highlight-face ((,class (:foreground ,magenta-alt))))
+   `(lui-time-stamp-face ((,class (:foreground ,blue-nuanced))))
    ;;;; color-rg
    `(color-rg-font-lock-column-number ((,class (:foreground ,magenta-alt-other))))
    `(color-rg-font-lock-command ((,class (:foreground ,fg-main :weight bold))))
@@ -1070,8 +1172,11 @@ AMOUNT is a customisation option."
    `(compilation-warning ((,class (:foreground ,yellow :weight ,modus-theme-bold))))
    ;;;; completions
    `(completions-annotations ((,class (:foreground ,fg-special-cold :slant ,modus-theme-slant))))
-   `(completions-common-part ((,class (:foreground ,cyan-alt-other))))
-   `(completions-first-difference ((,class (:foreground ,blue-alt-other :weight bold))))
+   `(completions-common-part ((,class (,@(modus-operandi-theme-completions
+                                        cyan-alt-other green-refine-bg green-refine-fg)))))
+   `(completions-first-difference ((,class (,@(modus-operandi-theme-completions
+                                               blue-alt-other blue-intense-bg fg-main)
+                                            :weight bold))))
    ;;;; counsel
    `(counsel-active-mode ((,class (:foreground ,magenta-alt-other))))
    `(counsel-application-name ((,class (:foreground ,red-alt-other))))
@@ -1377,6 +1482,11 @@ AMOUNT is a customisation option."
    `(ediff-odd-diff-C ((,class (:background ,bg-diff-neutral-1 :foreground ,fg-diff-neutral-1))))
    ;;;; eglot
    `(eglot-mode-line ((,class (:foreground ,magenta-active :weight ,modus-theme-bold))))
+   ;;;; el-search
+   `(el-search-highlight-in-prompt-face ((,class (:foreground ,magenta-alt :weight bold))))
+   `(el-search-match ((,class (:inherit modus-theme-intense-green))))
+   `(el-search-other-match ((,class (:inherit modus-theme-special-mild))))
+   `(el-search-occur-match ((,class (:inherit modus-theme-special-calm))))
    ;;;; eldoc-box
    `(eldoc-box-body ((,class (:background ,bg-alt :foreground ,fg-main))))
    `(eldoc-box-border ((,class (:background ,fg-alt))))
@@ -1434,25 +1544,28 @@ AMOUNT is a customisation option."
    `(erc-bold-face ((,class (:weight bold))))
    `(erc-button ((,class (:inherit button))))
    `(erc-command-indicator-face ((,class (:foreground ,cyan-alt :weight bold))))
-   `(erc-current-nick-face ((,class (:foreground ,blue))))
+   `(erc-current-nick-face ((,class (:foreground ,magenta-alt-other))))
    `(erc-dangerous-host-face ((,class (:inherit modus-theme-intense-red))))
-   `(erc-direct-msg-face ((,class (:foreground ,fg-special-mild))))
+   `(erc-direct-msg-face ((,class (:foreground ,magenta))))
    `(erc-error-face ((,class (:foreground ,red :weight bold))))
    `(erc-fool-face ((,class (:foreground ,fg-inactive))))
-   `(erc-header-line ((,class (:background ,bg-alt :foreground ,fg-main))))
+   `(erc-header-line ((,class (:background ,bg-header :foreground ,fg-header))))
    `(erc-input-face ((,class (:foreground ,fg-special-calm))))
    `(erc-inverse-face ((,class (:inherit erc-default-face :inverse-video t))))
    `(erc-keyword-face ((,class (:foreground ,magenta-alt :weight bold))))
    `(erc-my-nick-face ((,class (:foreground ,magenta :weight bold))))
    `(erc-my-nick-prefix-face ((,class (:inherit erc-my-nick-face))))
-   `(erc-nick-default-face ((,class (:foreground ,fg-special-cold :weight bold))))
+   `(erc-nick-default-face ((,class (:foreground ,blue :weight bold))))
    `(erc-nick-msg-face ((,class (:foreground ,green :weight bold))))
-   `(erc-nick-prefix-face ((,class (:inherit erc-nick-default-face :weight bold))))
-   `(erc-notice-face ((,class (:foreground ,fg-special-warm))))
-   `(erc-pal-face ((,class (:foreground ,magenta-alt-other :weight bold))))
+   `(erc-nick-prefix-face ((,class (:inherit erc-nick-default-face))))
+   `(erc-notice-face ((,class (:foreground ,fg-unfocused))))
+   `(erc-pal-face ((,class (:foreground ,red-alt :weight bold))))
    `(erc-prompt-face ((,class (:foreground ,cyan-alt-other :weight bold))))
-   `(erc-timestamp-face ((,class (:foreground ,blue-alt))))
+   `(erc-timestamp-face ((,class (:foreground ,blue-nuanced))))
    `(erc-underline-face ((,class (:underline t))))
+   ;;;; eros
+   `(eros-result-overlay-face ((,class (:box (:line-width -1 :color ,blue)
+                                             :background ,bg-dim :foreground ,fg-dim))))
    ;;;; ert
    `(ert-test-result-expected ((,class (:inherit modus-theme-intense-green))))
    `(ert-test-result-unexpected ((,class (:inherit modus-theme-intense-red))))
@@ -1512,8 +1625,8 @@ AMOUNT is a customisation option."
    ;;;; flycheck
    `(flycheck-error
      ((,(append '((supports :underline (:style wave))) class)
-       (:foreground ,red-nuanced :underline (:color ,fg-lang-error :style wave)))
-      (,class (:foreground ,red-nuanced :underline (:color ,fg-lang-error :style line)))))
+       (:underline (:color ,fg-lang-error :style wave)))
+      (,class (:foreground ,fg-lang-error :underline t))))
    `(flycheck-error-list-checker-name ((,class (:foreground ,magenta-active))))
    `(flycheck-error-list-column-number ((,class (:foreground ,fg-special-cold))))
    `(flycheck-error-list-error ((,class (:foreground ,red :weight ,modus-theme-bold))))
@@ -1529,13 +1642,13 @@ AMOUNT is a customisation option."
    `(flycheck-fringe-warning ((,class (:inherit modus-theme-fringe-yellow))))
    `(flycheck-info
      ((,(append '((supports :underline (:style wave))) class)
-       (:foreground ,blue-nuanced :underline (:color ,fg-lang-note :style wave)))
-      (,class (:foreground ,blue-nuanced :underline (:color ,fg-lang-note :style line)))))
+       (:underline (:color ,fg-lang-note :style wave)))
+      (,class (:foreground ,fg-lang-note :underline t))))
    `(flycheck-verify-select-checker ((,class (:box (:line-width 1 :color nil :style released-button)))))
    `(flycheck-warning
      ((,(append '((supports :underline (:style wave))) class)
-       (:foreground ,yellow-nuanced :underline (:color ,fg-lang-warning :style wave)))
-      (,class (:foreground ,yellow-nuanced :underline (:color ,fg-lang-warning :style line)))))
+       (:underline (:color ,fg-lang-warning :style wave)))
+      (,class (:foreground ,fg-lang-warning :underline t))))
    ;;;; flycheck-indicator
    `(flycheck-indicator-disabled ((,class (:foreground ,fg-inactive :slant ,modus-theme-slant))))
    `(flycheck-indicator-error ((,class (:foreground ,red-active :weight ,modus-theme-bold))))
@@ -1553,24 +1666,24 @@ AMOUNT is a customisation option."
    ;;;; flymake
    `(flymake-error
      ((,(append '((supports :underline (:style wave))) class)
-       (:foreground ,red-nuanced :underline (:color ,fg-lang-error :style wave)))
-      (,class (:foreground ,red-nuanced :underline (:color ,fg-lang-error :style line)))))
+       (:underline (:color ,fg-lang-error :style wave)))
+      (,class (:foreground ,fg-lang-error :underline t))))
    `(flymake-note
      ((,(append '((supports :underline (:style wave))) class)
-       (:foreground ,blue-nuanced :underline (:color ,fg-lang-note :style wave)))
-      (,class (:foreground ,blue-nuanced :underline (:color ,fg-lang-note :style line)))))
+       (:underline (:color ,fg-lang-note :style wave)))
+      (,class (:foreground ,fg-lang-note :underline t))))
    `(flymake-warning
      ((,(append '((supports :underline (:style wave))) class)
-       (:foreground ,yellow-nuanced :underline (:color ,fg-lang-warning :style wave)))
-      (,class (:foreground ,yellow-nuanced :underline (:color ,fg-lang-warning :style line)))))
+       (:underline (:color ,fg-lang-warning :style wave)))
+      (,class (:foreground ,fg-lang-warning :underline t))))
    ;;;; flyspell
    `(flyspell-duplicate
      ((,(append '((supports :underline (:style wave))) class)
-       (:foreground ,fg-lang-warning :underline (:style wave)))
+       (:underline (:color ,fg-lang-warning :style wave)))
       (,class (:foreground ,fg-lang-warning :underline t))))
    `(flyspell-incorrect
      ((,(append '((supports :underline (:style wave))) class)
-       (:foreground ,fg-lang-error :underline (:style wave)))
+       (:underline (:color ,fg-lang-error :style wave)))
       (,class (:foreground ,fg-lang-error :underline t))))
    ;;;; flyspell-correct
    `(flyspell-correct-highlight-face ((,class (:inherit modus-theme-refine-green))))
@@ -1757,7 +1870,7 @@ AMOUNT is a customisation option."
    `(gnus-summary-cancelled ((,class (:background ,bg-mark-other :foreground ,fg-mark-other :weight bold))))
    `(gnus-summary-high-ancient ((,class (:foreground ,fg-alt :weight bold))))
    `(gnus-summary-high-read ((,class (:foreground ,fg-special-cold :weight bold))))
-   `(gnus-summary-high-ticked ((,class (:foreground ,red-alt :weight bold))))
+   `(gnus-summary-high-ticked ((,class (:foreground ,red-alt-other :weight bold))))
    `(gnus-summary-high-undownloaded ((,class (:foreground ,yellow :weight bold))))
    `(gnus-summary-high-unread ((,class (:foreground ,fg-main :weight bold))))
    `(gnus-summary-low-ancient ((,class (:foreground ,fg-alt :slant italic))))
@@ -1767,10 +1880,12 @@ AMOUNT is a customisation option."
    `(gnus-summary-low-unread ((,class (:foreground ,fg-special-cold :weight bold))))
    `(gnus-summary-normal-ancient ((,class (:foreground ,fg-special-calm))))
    `(gnus-summary-normal-read ((,class (:foreground ,fg-special-cold))))
-   `(gnus-summary-normal-ticked ((,class (:foreground ,red-alt))))
+   `(gnus-summary-normal-ticked ((,class (:foreground ,red-alt-other))))
    `(gnus-summary-normal-undownloaded ((,class (:foreground ,yellow))))
    `(gnus-summary-normal-unread ((,class (:foreground ,fg-main))))
-   `(gnus-summary-selected ((,class (:inherit modus-theme-subtle-cyan))))
+   `(gnus-summary-selected ((,class (:inherit modus-theme-subtle-blue))))
+   ;;;; golden-ratio-scroll-screen
+   `(golden-ratio-scroll-highlight-line-face ((,class (:background ,cyan-subtle-bg :foreground ,fg-main))))
    ;;;; helm
    `(helm-M-x-key ((,class (:foreground ,magenta-alt-other :weight bold))))
    `(helm-action ((,class (:underline t))))
@@ -1792,8 +1907,12 @@ AMOUNT is a customisation option."
    `(helm-buffer-size ((,class (:foreground ,fg-alt))))
    `(helm-candidate-number ((,class (:foreground ,cyan-active))))
    `(helm-candidate-number-suspended ((,class (:foreground ,yellow-active))))
+   `(helm-comint-prompts-buffer-name ((,class (:foreground ,green-active))))
+   `(helm-comint-prompts-promptidx ((,class (:foreground ,cyan-active))))
    `(helm-delete-async-message ((,class (:foreground ,magenta-active :weight bold))))
    `(helm-eob-line ((,class (:background ,bg-main :foreground ,fg-main))))
+   `(helm-eshell-prompts-buffer-name ((,class (:foreground ,green-active))))
+   `(helm-eshell-prompts-promptidx ((,class (:foreground ,cyan-active))))
    `(helm-etags-file ((,class (:foreground ,fg-dim :underline t))))
    `(helm-ff-denied ((,class (:inherit modus-theme-intense-red))))
    `(helm-ff-directory ((,class (:inherit helm-buffer-directory))))
@@ -1895,6 +2014,9 @@ AMOUNT is a customisation option."
    ;;;; highlight-escape-sequences (`hes-mode')
    `(hes-escape-backslash-face ((,class (:foreground ,fg-escape-char-construct :weight bold))))
    `(hes-escape-sequence-face ((,class (:foreground ,fg-escape-char-backslash :weight bold))))
+   ;;;; highlight-indentation
+   `(highlight-indentation-face ((,class (:background ,bg-hl-line))))
+   `(highlight-indentation-current-column-face ((,class (:background ,bg-active))))
    ;;;; highlight-numbers
    `(highlight-numbers-number ((,class (:foreground ,blue-alt-other))))
    ;;;; highlight-symbol
@@ -1911,15 +2033,31 @@ AMOUNT is a customisation option."
    `(hydra-face-pink ((,class (:foreground ,magenta-alt :weight bold))))
    `(hydra-face-red ((,class (:foreground ,red :weight bold))))
    `(hydra-face-teal ((,class (:foreground ,cyan :weight bold))))
+   ;;;; hyperlist
+   `(hyperlist-condition ((,class (:foreground ,green))))
+   `(hyperlist-hashtag ((,class (:foreground ,yellow))))
+   `(hyperlist-operator ((,class (:foreground ,blue-alt))))
+   `(hyperlist-paren ((,class (:foreground ,cyan-alt-other))))
+   `(hyperlist-quote ((,class (:foreground ,cyan-alt))))
+   `(hyperlist-ref ((,class (:foreground ,magenta-alt-other))))
+   `(hyperlist-stars ((,class (:foreground ,fg-alt))))
+   `(hyperlist-tag ((,class (:foreground ,red))))
+   `(hyperlist-toplevel ((,class (:foreground ,fg-main :weight bold))))
    ;;;; icomplete
-   `(icomplete-first-match ((,class (:foreground ,magenta :weight bold))))
+   `(icomplete-first-match ((,class (,@(modus-operandi-theme-completions
+                                        magenta magenta-intense-bg fg-main)
+                                      :weight bold))))
    ;;;; icomplete-vertical
    `(icomplete-vertical-separator ((,class (:foreground ,fg-alt))))
    ;;;; ido-mode
-   `(ido-first-match ((,class (:foreground ,magenta :weight bold))))
+   `(ido-first-match ((,class (,@(modus-operandi-theme-completions
+                                  magenta magenta-subtle-bg fg-main)
+                               :weight bold))))
    `(ido-incomplete-regexp ((,class (:inherit error))))
    `(ido-indicator ((,class (:inherit modus-theme-subtle-yellow))))
-   `(ido-only-match ((,class (:foreground ,magenta-intense :weight bold))))
+   `(ido-only-match ((,class (,@(modus-operandi-theme-completions
+                                 magenta-intense magenta-intense-bg fg-main)
+                              :weight bold))))
    `(ido-subdir ((,class (:foreground ,blue-alt-other))))
    `(ido-virtual ((,class (:foreground ,yellow-alt-other))))
    ;;;; iedit
@@ -1929,14 +2067,22 @@ AMOUNT is a customisation option."
    `(iflipb-current-buffer-face ((,class (:foreground ,cyan-alt :weight bold))))
    `(iflipb-other-buffer-face ((,class (:foreground ,fg-alt))))
    ;;;; imenu-list
-   `(imenu-list-entry-face-0 ((,class (:foreground ,magenta-alt-other))))
-   `(imenu-list-entry-face-1 ((,class (:foreground ,cyan-alt-other))))
-   `(imenu-list-entry-face-2 ((,class (:foreground ,yellow-alt-other))))
-   `(imenu-list-entry-face-3 ((,class (:foreground ,green-alt-other))))
+   `(imenu-list-entry-face-0 ((,class (:foreground ,cyan))))
+   `(imenu-list-entry-face-1 ((,class (:foreground ,blue))))
+   `(imenu-list-entry-face-2 ((,class (:foreground ,cyan-alt-other))))
+   `(imenu-list-entry-face-3 ((,class (:foreground ,blue-alt))))
    `(imenu-list-entry-subalist-face-0 ((,class (:foreground ,magenta-alt-other :weight bold :underline t))))
-   `(imenu-list-entry-subalist-face-1 ((,class (:foreground ,cyan-alt-other :weight bold :underline t))))
-   `(imenu-list-entry-subalist-face-2 ((,class (:foreground ,yellow-alt-other :weight bold :underline t))))
-   `(imenu-list-entry-subalist-face-3 ((,class (:foreground ,green-alt-other :weight bold :underline t))))
+   `(imenu-list-entry-subalist-face-1 ((,class (:foreground ,magenta :weight bold :underline t))))
+   `(imenu-list-entry-subalist-face-2 ((,class (:foreground ,green-alt-other :weight bold :underline t))))
+   `(imenu-list-entry-subalist-face-3 ((,class (:foreground ,red-alt-other :weight bold :underline t))))
+   ;;;; indium
+   `(indium-breakpoint-face ((,class (:foreground ,red-active))))
+   `(indium-frame-url-face ((,class (:foreground ,fg-alt :underline t))))
+   `(indium-keyword-face ((,class (:foreground ,magenta-alt-other))))
+   `(indium-litable-face ((,class (:foreground ,fg-special-warm :slant ,modus-theme-slant))))
+   `(indium-repl-error-face ((,class (:foreground ,red :weight bold))))
+   `(indium-repl-prompt-face ((,class (:foreground ,cyan-alt-other))))
+   `(indium-repl-stdout-face ((,class (:foreground ,fg-main))))
    ;;;; info
    `(Info-quoted ((,class (:foreground ,magenta)))) ; the capitalisation is canonical
    `(info-header-node ((,class (:foreground ,fg-special-warm))))
@@ -2019,6 +2165,14 @@ AMOUNT is a customisation option."
    `(jiralib-link-filter-face ((,class (:underline t))))
    `(jiralib-link-issue-face ((,class (:underline t))))
    `(jiralib-link-project-face ((,class (:underline t))))
+   ;;;; journalctl-mode
+   `(journalctl-error-face ((,class (:foreground ,red :weight bold))))
+   `(journalctl-finished-face ((,class (:foreground ,green :weight bold))))
+   `(journalctl-host-face ((,class (:foreground ,blue))))
+   `(journalctl-process-face ((,class (:foreground ,cyan-alt-other))))
+   `(journalctl-starting-face ((,class (:foreground ,green))))
+   `(journalctl-timestamp-face ((,class (:foreground ,fg-special-cold))))
+   `(journalctl-warning-face ((,class (:foreground ,yellow :weight bold))))
    ;;;; js2-mode
    `(js2-error ((,class (:foreground ,red))))
    `(js2-external-variable ((,class (:foreground ,cyan-alt-other))))
@@ -2155,7 +2309,7 @@ AMOUNT is a customisation option."
    `(magit-hash ((,class (:foreground ,fg-special-warm))))
    `(magit-head ((,class (:inherit magit-branch-local))))
    `(magit-header-line ((,class (:foreground ,cyan-active :weight bold))))
-   `(magit-header-line-key ((,class (:foreground ,blue-active :weight bold))))
+   `(magit-header-line-key ((,class (:foreground ,red-active :weight bold))))
    `(magit-header-line-log-select ((,class (:foreground ,fg-main :weight bold))))
    `(magit-keyword ((,class (:foreground ,magenta))))
    `(magit-keyword-squash ((,class (:foreground ,yellow-alt-other :weight bold))))
@@ -2302,6 +2456,9 @@ AMOUNT is a customisation option."
    `(message-header-xheader ((,class (:foreground ,blue-alt-other))))
    `(message-mml ((,class (:foreground ,green-alt-other))))
    `(message-separator ((,class (:background ,bg-alt :foreground ,fg-special-warm))))
+   ;;;; minimap
+   `(minimap-active-region-background ((,class (:background ,bg-active))))
+   `(minimap-current-line-face ((,class (:background ,cyan-intense-bg :foreground ,fg-main))))
    ;;;; modeline
    `(mode-line ((,class (:box ,(modus-operandi-theme-modeline-box bg-inactive fg-inactive t)
                               ,@(modus-operandi-theme-modeline-props
@@ -2400,11 +2557,44 @@ AMOUNT is a customisation option."
    `(no-emoji ((,class (:foreground ,cyan))))
    ;;;; num3-mode
    `(num3-face-even ((,class (:background ,bg-alt :weight bold))))
+   ;;;; nxml-mode
+   `(nxml-attribute-colon ((,class (:foreground ,fg-main))))
+   `(nxml-attribute-local-name ((,class (:foreground ,cyan-alt))))
+   `(nxml-attribute-prefix ((,class (:foreground ,cyan-alt-other :weight ,modus-theme-bold))))
+   `(nxml-attribute-value ((,class (:foreground ,blue))))
+   `(nxml-cdata-section-CDATA ((,class (:foreground ,red-alt :weight ,modus-theme-bold))))
+   `(nxml-cdata-section-delimiter ((,class (:foreground ,red-alt))))
+   `(nxml-char-ref-delimiter ((,class (:foreground ,green-alt-other))))
+   `(nxml-char-ref-number ((,class (:foreground ,green-alt-other :weight ,modus-theme-bold))))
+   `(nxml-delimited-data ((,class (:foreground ,fg-special-cold :slant ,modus-theme-slant))))
+   `(nxml-delimiter ((,class (:foreground ,fg-dim))))
+   `(nxml-element-colon ((,class (:foreground ,fg-main))))
+   `(nxml-element-local-name ((,class (:foreground ,magenta))))
+   `(nxml-element-prefix ((,class (:foreground ,magenta-alt :weight ,modus-theme-bold))))
+   `(nxml-entity-ref-delimiter ((,class (:foreground ,green-alt-other))))
+   `(nxml-entity-ref-name ((,class (:foreground ,green-alt-other :weight ,modus-theme-bold))))
+   `(nxml-glyph ((,class (:inherit modus-theme-intense-neutral))))
+   `(nxml-hash ((,class (:foreground ,blue-alt :weight ,modus-theme-bold))))
+   `(nxml-heading ((,class (:weight bold))))
+   `(nxml-name ((,class (:foreground ,magenta-alt :weight ,modus-theme-bold))))
+   `(nxml-namespace-attribute-colon ((,class (:foreground ,fg-main))))
+   `(nxml-namespace-attribute-prefix ((,class (:foreground ,cyan))))
+   `(nxml-processing-instruction-target ((,class (:foreground ,magenta-alt-other :weight ,modus-theme-bold))))
+   `(nxml-prolog-keyword ((,class (:foreground ,magenta-alt-other :weight ,modus-theme-bold))))
+   `(nxml-ref ((,class (:foreground ,green-alt-other :weight ,modus-theme-bold))))
    ;;;; orderless
-   `(orderless-match-face-0 ((,class (:foreground ,blue-alt :weight bold))))
-   `(orderless-match-face-1 ((,class (:foreground ,magenta-alt :weight bold))))
-   `(orderless-match-face-2 ((,class (:foreground ,green-alt-other :weight bold))))
-   `(orderless-match-face-3 ((,class (:foreground ,yellow-alt-other :weight bold))))
+   `(orderless-match-face-0 ((,class (,@(modus-operandi-theme-completions
+                                         blue-alt blue-refine-bg blue-refine-fg)
+                                      :weight bold))))
+   `(orderless-match-face-1 ((,class (,@(modus-operandi-theme-completions
+                                         magenta-alt magenta-refine-bg magenta-refine-fg)
+                                      :weight bold))))
+   `(orderless-match-face-2 ((,class (,@(modus-operandi-theme-completions
+                                         green-alt-other green-refine-bg green-refine-fg)
+                                      :weight bold))))
+   `(orderless-match-face-3 ((,class (,@(modus-operandi-theme-completions
+                                         yellow-alt-other yellow-refine-bg yellow-refine-fg)
+                                      :weight bold))))
    ;;;; org
    `(org-agenda-calendar-event ((,class (:foreground ,blue-alt))))
    `(org-agenda-calendar-sexp ((,class (:foreground ,cyan-alt))))
@@ -2430,11 +2620,12 @@ AMOUNT is a customisation option."
                                              :foreground ,fg-special-mild
                                              ,@(modus-operandi-theme-scale modus-operandi-theme-scale-3)))))
    `(org-archived ((,class (:background ,bg-alt :foreground ,fg-alt))))
-   `(org-block ((,class (,@(modus-operandi-theme-org-src-block bg-dim bg-main) :foreground ,fg-main))))
+   `(org-block ((,class (,@(modus-operandi-theme-org-src-block bg-dim bg-main)
+                         :inherit fixed-pitch :foreground ,fg-main))))
    `(org-block-begin-line ((,class (,@(and (>= emacs-major-version 27)
                                            modus-operandi-theme-distinct-org-blocks
                                            '(:extend t))
-                                    :background ,bg-alt :foreground ,fg-special-mild))))
+                                    :inherit fixed-pitch :background ,bg-alt :foreground ,fg-special-mild))))
    `(org-block-end-line ((,class (:inherit org-block-begin-line))))
    `(org-checkbox ((,class (:weight bold))))
    `(org-checkbox-statistics-done ((,class (:foreground ,green
@@ -2444,14 +2635,16 @@ AMOUNT is a customisation option."
                                                         ,@(modus-operandi-theme-heading-block
                                                            yellow-nuanced-bg yellow-nuanced)))))
    `(org-clock-overlay ((,class (:inherit modus-theme-special-cold))))
-   `(org-code ((,class (:foreground ,magenta))))
+   `(org-code ((,class (:inherit fixed-pitch :foreground ,magenta))))
    `(org-column ((,class (:background ,bg-alt))))
    `(org-column-title ((,class (:underline t :background ,bg-alt :weight bold))))
    `(org-date ((,class (:foreground ,blue-nuanced))))
    `(org-date-selected ((,class (:inherit modus-theme-intense-cyan :weight bold))))
    `(org-default ((,class (:background ,bg-main :foreground ,fg-main))))
    `(org-document-info ((,class (:foreground ,fg-special-cold))))
-   `(org-document-title ((,class (:foreground ,fg-special-cold :weight bold))))
+   `(org-document-info-keyword ((,class (:inherit fixed-pitch :foreground ,fg-alt))))
+   `(org-document-title ((,class (,@(modus-operandi-theme-scale modus-operandi-theme-scale-5)
+                                  :foreground ,fg-special-cold :weight bold))))
    `(org-done ((,class (,@(modus-operandi-theme-org-todo-block green-nuanced-bg green-nuanced green)))))
    `(org-drawer ((,class (:foreground ,cyan-alt))))
    `(org-ellipsis ((,class (:foreground nil)))) ; inherits from the heading's colour
@@ -2468,7 +2661,8 @@ AMOUNT is a customisation option."
    `(org-headline-done ((,class (:foreground ,green-nuanced
                                              ,@(modus-operandi-theme-heading-block
                                                 green-nuanced-bg green-nuanced)))))
-   `(org-hide ((,class (:foreground ,fg-main))))
+   `(org-hide ((,class (:foreground ,bg-main))))
+   `(org-indent ((,class (:inherit (fixed-pitch org-hide)))))
    `(org-latex-and-related ((,class (:foreground ,magenta-refine-fg))))
    `(org-level-1 ((,class (:inherit ,modus-theme-variable-pitch :weight bold
                                     ,@(modus-operandi-theme-heading-foreground fg-main magenta-alt-other)
@@ -2501,8 +2695,8 @@ AMOUNT is a customisation option."
    `(org-link ((,class (:inherit link))))
    `(org-list-dt ((,class (:weight bold))))
    `(org-macro ((,class (:inherit org-latex-and-related))))
-   `(org-meta-line ((,class (:foreground ,fg-alt :slant ,modus-theme-slant))))
-   `(org-mode-line-clock ((,class (:background ,bg-main :foreground ,fg-main))))
+   `(org-meta-line ((,class (:inherit fixed-pitch :foreground ,fg-alt :slant ,modus-theme-slant))))
+   `(org-mode-line-clock ((,class (:foreground ,fg-main))))
    `(org-mode-line-clock-overrun ((,class (:inherit modus-theme-active-red))))
    `(org-priority ((,class (,@(modus-operandi-theme-org-todo-block blue-nuanced-bg blue-nuanced magenta)
                             ,@(modus-operandi-theme-heading-foreground magenta blue-alt)))))
@@ -2513,7 +2707,7 @@ AMOUNT is a customisation option."
    `(org-scheduled-today ((,class (:foreground ,yellow-alt-other))))
    `(org-sexp-date ((,class (:inherit org-date))))
    `(org-special-keyword ((,class (,@(modus-operandi-theme-org-todo-block cyan-nuanced-bg cyan-nuanced cyan-alt)))))
-   `(org-table ((,class (:foreground ,fg-special-cold))))
+   `(org-table ((,class (:inherit fixed-pitch :foreground ,fg-special-cold))))
    `(org-tag ((,class (:foreground ,magenta-nuanced :weight normal))))
    `(org-tag-group ((,class (:foreground ,cyan-nuanced :weight bold))))
    `(org-target ((,class (:underline t))))
@@ -2522,7 +2716,7 @@ AMOUNT is a customisation option."
                         ,@(modus-operandi-theme-heading-foreground magenta-alt-other red-alt-other)))))
    `(org-upcoming-deadline ((,class (:foreground ,red-alt-other))))
    `(org-upcoming-distant-deadline ((,class (:foreground ,red-nuanced))))
-   `(org-verbatim ((,class (:background ,bg-alt :foreground ,fg-special-calm))))
+   `(org-verbatim ((,class (:inherit fixed-pitch :background ,bg-alt :foreground ,fg-special-calm))))
    `(org-verse ((,class (:inherit org-quote))))
    `(org-warning ((,class (:foreground ,blue-intense))))
    ;;;; org-journal
@@ -2711,12 +2905,12 @@ AMOUNT is a customisation option."
    `(rcirc-bright-nick ((,class (:foreground ,magenta-alt :weight bold))))
    `(rcirc-dim-nick ((,class (:foreground ,fg-alt))))
    `(rcirc-my-nick ((,class (:foreground ,magenta :weight bold))))
-   `(rcirc-nick-in-message ((,class (:foreground ,blue))))
+   `(rcirc-nick-in-message ((,class (:foreground ,magenta-alt-other))))
    `(rcirc-nick-in-message-full-line ((,class (:foreground ,fg-special-mild :weight bold))))
    `(rcirc-other-nick ((,class (:foreground ,fg-special-cold :weight bold))))
    `(rcirc-prompt ((,class (:foreground ,cyan-alt-other :weight bold))))
-   `(rcirc-server ((,class (:foreground ,fg-special-warm))))
-   `(rcirc-timestamp ((,class (:foreground ,fg-inactive))))
+   `(rcirc-server ((,class (:foreground ,fg-unfocused))))
+   `(rcirc-timestamp ((,class (:foreground ,blue-nuanced))))
    `(rcirc-url ((,class (:foreground ,blue :underline t))))
    ;;;; regexp-builder (re-builder)
    `(reb-match-0 ((,class (:inherit modus-theme-intense-blue))))
@@ -2775,9 +2969,9 @@ AMOUNT is a customisation option."
                                                 ,@(modus-operandi-theme-scale modus-operandi-theme-scale-4)))))
    `(sallet-substring-match ((,class (:inherit modus-theme-refine-blue))))
    ;;;; selectrum
-   `(selectrum-current-candidate ((,class (:inherit modus-theme-intense-cyan))))
-   `(selectrum-primary-highlight ((,class (:foreground ,magenta-alt :weight bold))))
-   `(selectrum-secondary-highlight ((,class (:foreground ,blue-alt-other :weight bold))))
+   `(selectrum-current-candidate ((,class (:inherit modus-theme-intense-magenta))))
+   `(selectrum-primary-highlight ((,class (:inherit modus-theme-refine-blue :weight bold))))
+   `(selectrum-secondary-highlight ((,class (:inherit modus-theme-refine-cyan :weight bold))))
    ;;;; sesman
    `(sesman-browser-button-face ((,class (:foreground ,blue-alt-other :underline t))))
    `(sesman-browser-highligh-face ((,class (:inherit modus-theme-subtle-blue))))
@@ -3048,6 +3242,24 @@ AMOUNT is a customisation option."
    `(vc-removed-state ((,class (:foreground ,red-active))))
    `(vc-state-base ((,class (:foreground ,fg-active))))
    `(vc-up-to-date-state ((,class (:foreground ,fg-special-cold))))
+   ;;;; vdiff
+   `(vdiff-addition-face ((,class ,(modus-operandi-theme-diffs
+                                    bg-main green
+                                    bg-diff-focus-added fg-diff-focus-added))))
+   `(vdiff-change-face ((,class ,(modus-operandi-theme-diffs
+                                  bg-main yellow
+                                  bg-diff-focus-changed fg-diff-focus-changed))))
+   `(vdiff-closed-fold-face ((,class (:background ,bg-diff-neutral-1 :foreground ,fg-diff-neutral-1))))
+   `(vdiff-refine-added ((,class ,(modus-operandi-theme-diffs
+                                   bg-diff-added fg-diff-added
+                                   bg-diff-refine-added fg-diff-refine-added))))
+   `(vdiff-refine-changed ((,class ,(modus-operandi-theme-diffs
+                                     bg-diff-changed fg-diff-changed
+                                     bg-diff-refine-changed fg-diff-refine-changed))))
+   `(vdiff-subtraction-face ((,class ,(modus-operandi-theme-diffs
+                                       bg-main red
+                                       bg-diff-focus-removed fg-diff-focus-removed))))
+   `(vdiff-target-face ((,class (:inherit modus-theme-intense-blue))))
    ;;;; vimish-fold
    `(vimish-fold-fringe ((,class (:foreground ,cyan-active))))
    `(vimish-fold-mouse-face ((,class (:inherit modus-theme-intense-blue))))
@@ -3211,6 +3423,8 @@ AMOUNT is a customisation option."
    `(xref-match ((,class (:inherit match))))
    ;;;; yaml-mode
    `(yaml-tab-face ((,class (:inherit modus-theme-intense-red))))
+   ;;;; yasnippet
+   `(yas-field-highlight-face ((,class (:background ,bg-alt :foreground ,fg-main))))
    ;;;; ztree
    `(ztreep-arrow-face ((,class (:foreground ,fg-inactive))))
    `(ztreep-diff-header-face ((,class (:height 1.2 :foreground ,fg-special-cold :weight bold))))
@@ -3228,20 +3442,19 @@ AMOUNT is a customisation option."
      (custom-theme-set-faces
       'modus-operandi
       ;;;; tab-bar-mode
-      `(tab-bar ((,class (:background ,bg-alt :foreground ,fg-alt))))
-      `(tab-bar-tab ((,class (:box (:line-width 1 :color ,fg-window-divider-inner)
-                                   :background ,bg-tab-active :foreground ,fg-main))))
-      `(tab-bar-tab-inactive ((,class (:box (:line-width 1 :color ,bg-tab-active)
+      `(tab-bar ((,class (:background ,bg-tab-bar :foreground ,fg-main))))
+      `(tab-bar-tab ((,class (:box (:line-width 2 :color ,bg-tab-active)
+                                   :background ,bg-tab-active :foreground ,fg-main :weight bold))))
+      `(tab-bar-tab-inactive ((,class (:box (:line-width 2 :color ,bg-tab-inactive)
                                             :background ,bg-tab-inactive :foreground ,fg-dim))))
       ;;;; tab-line-mode
-      `(tab-line ((,class (:height 0.95 :background ,bg-active :foreground ,fg-active))))
-      `(tab-line-close-highlight ((,class (:foreground ,red-active))))
-      `(tab-line-highlight ((,class (:background ,bg-tab-active :foreground ,fg-main))))
-      `(tab-line-tab ((,class (:box (:line-width 1 :color ,fg-window-divider-inner)
-                                    :background ,bg-tab-active :foreground ,fg-main))))
-      `(tab-line-tab-current ((,class (:box (:line-width 1 :color ,fg-window-divider-inner)
-                                            :background ,bg-tab-active :foreground ,fg-main))))
-      `(tab-line-tab-inactive ((,class (:box (:line-width 1 :color ,bg-tab-active)
+      `(tab-line ((,class (:height 0.95 :background ,bg-tab-bar :foreground ,fg-main))))
+      `(tab-line-close-highlight ((,class (:foreground ,red))))
+      `(tab-line-highlight ((,class (:background ,blue-subtle-bg :foreground ,fg-dim))))
+      `(tab-line-tab ((,class (:box (:line-width 2 :color ,bg-tab-active)
+                                    :background ,bg-tab-active :foreground ,fg-main :weight bold))))
+      `(tab-line-tab-current ((,class (:inherit tab-line-tab))))
+      `(tab-line-tab-inactive ((,class (:box (:line-width 2 :color ,bg-tab-inactive)
                                              :background ,bg-tab-inactive :foreground ,fg-dim))))))
    ;;; Theme Variables
    (custom-theme-set-variables
@@ -3312,4 +3525,5 @@ AMOUNT is a customisation option."
 (provide-theme 'modus-operandi)
 
 (provide 'modus-operandi-theme)
+
 ;;; modus-operandi-theme.el ends here
