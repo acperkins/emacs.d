@@ -26,6 +26,7 @@
 
 ;; Reduce cramp from common keyboard shortcuts.
 (define-key key-translation-map (kbd "<f9>") (kbd "M-x"))
+(global-set-key (kbd "<f12>") 'save-buffer)
 
 ;; Assign left-hand keys on a Sun keyboard.
 (global-set-key (kbd "<cancel>"   ) 'keyboard-quit)           ; Stop
