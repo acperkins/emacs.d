@@ -11,6 +11,7 @@
 (require 'company-lsp)
 (require 'lsp)
 (require 'lsp-clients)
+(require 'olivetti)
 (add-hook 'c-mode-hook 'lsp)
 (push 'company-lsp company-backends)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -27,6 +28,7 @@
 ;; Reduce cramp from common keyboard shortcuts.
 (define-key key-translation-map (kbd "<f9>") (kbd "M-x"))
 (global-set-key (kbd "<f12>") 'save-buffer)
+(global-set-key (kbd "<M-f11>") 'olivetti-mode)
 
 ;; Assign left-hand keys on a Sun keyboard.
 (global-set-key (kbd "<cancel>"   ) 'keyboard-quit)           ; Stop
@@ -89,7 +91,8 @@
 (setq-default indent-tabs-mode t
               c-basic-offset 8
               fill-column 72
-              frame-title-format '("%b"))
+              frame-title-format '("%b")
+              olivetti-body-width 102)
 (show-paren-mode t)
 (global-whitespace-mode 1)
 (electric-pair-mode 1)
