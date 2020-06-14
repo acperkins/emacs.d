@@ -61,6 +61,15 @@
 ;(load-theme 'tango-dark)
 (load-theme 'modus-operandi t)
 
+;; Set font based on operating system.
+(cond
+ ((string-equal system-type "gnu/linux")
+  (progn
+    (add-to-list 'default-frame-alist '(font . "Noto Sans Mono-10"))))
+ ((string-equal system-type "windows-nt")
+  (progn
+    (add-to-list 'default-frame-alist '(font . "Consolas")))))
+
 ;; Main options that don't come under other sections.
 (add-to-list 'default-frame-alist '(height . 35))
 (add-to-list 'default-frame-alist '(width . 132))
