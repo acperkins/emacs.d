@@ -65,7 +65,7 @@
 (cond
  ((string-equal system-type "gnu/linux")
   (progn
-    (add-to-list 'default-frame-alist '(font . "Noto Sans Mono-10"))))
+    (add-to-list 'default-frame-alist '(font . "Noto Sans Mono-11"))))
  ((string-equal system-type "windows-nt")
   (progn
     (add-to-list 'default-frame-alist '(font . "Consolas")))))
