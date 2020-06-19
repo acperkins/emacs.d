@@ -26,6 +26,7 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Reduce cramp from common keyboard shortcuts.
+(global-set-key (kbd "<f7>") 'ispell-buffer)
 (define-key key-translation-map (kbd "<f9>") (kbd "M-x"))
 (global-set-key (kbd "<f12>") 'save-buffer)
 (global-set-key (kbd "<M-f11>") 'olivetti-mode)
