@@ -98,7 +98,7 @@
       whitespace-line-column 100
       whitespace-style '(face lines-tail trailing tabs tab-mark)
       x-super-keysym 'meta)
-(setq-default indent-tabs-mode t
+(setq-default indent-tabs-mode nil
               c-basic-offset 8
               fill-column 72
               frame-title-format '("%b")
