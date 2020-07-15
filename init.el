@@ -75,6 +75,8 @@
 (add-to-list 'default-frame-alist '(height . 35))
 (add-to-list 'default-frame-alist '(width . 132))
 (c-set-offset 'arglist-cont-nonempty '4)
+(electric-pair-mode 1)
+(global-whitespace-mode 1)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (setq auto-save-default nil
@@ -98,14 +100,12 @@
       whitespace-line-column 100
       whitespace-style '(face lines-tail trailing tabs tab-mark)
       x-super-keysym 'meta)
-(setq-default indent-tabs-mode nil
-              c-basic-offset 8
+(setq-default c-basic-offset 8
               fill-column 72
               frame-title-format '("%b")
+              indent-tabs-mode nil
               olivetti-body-width 102)
 (show-paren-mode t)
-(global-whitespace-mode 1)
-(electric-pair-mode 1)
 
 ;; Set up Magit.
 (global-set-key (kbd "C-x g") 'magit-status)
