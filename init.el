@@ -89,9 +89,15 @@
       line-move-visual nil
       mouse-wheel-progressive-speed nil
       mouse-wheel-scroll-amount '(4 ((shift) . 1) ((control) . 8))
+      org-agenda-files '("~/.todo.org")
       org-log-done 'time
       org-startup-folded nil
       org-startup-truncated nil
+      org-todo-keywords '((sequence "TODO(t)"
+                                    "WAITING(w)"
+                                    "|"
+                                    "DONE(d)"
+                                    "CANCELLED(c)"))
       sentence-end-double-space nil
       shr-inhibit-images t
       shr-use-fonts nil
