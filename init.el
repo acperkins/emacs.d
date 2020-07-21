@@ -43,6 +43,9 @@
 (global-set-key (kbd "<find>"     ) 'isearch-forward)         ; Find
 (global-set-key (kbd "<XF86Cut>"  ) 'kill-region)             ; Cut
 
+;; Assign keyboard shortcuts for individual modes.
+(define-key c-mode-map (kbd "<C-tab>") 'indent-relative)
+
 ;; Prefer UTF-8 encoding for all files.
 (prefer-coding-system 'utf-8)
 
