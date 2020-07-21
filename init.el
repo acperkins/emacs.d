@@ -44,7 +44,10 @@
 (global-set-key (kbd "<XF86Cut>"  ) 'kill-region)             ; Cut
 
 ;; Assign keyboard shortcuts for individual modes.
-(define-key c-mode-map (kbd "<C-tab>") 'indent-relative)
+(defun my-indent-relative-first-only ()
+  (interactive)
+  (indent-relative t nil))
+(define-key c-mode-map (kbd "<C-tab>") 'my-indent-relative-first-only)
 
 ;; Prefer UTF-8 encoding for all files.
 (prefer-coding-system 'utf-8)
