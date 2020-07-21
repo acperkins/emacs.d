@@ -71,6 +71,16 @@
   (progn
     (add-to-list 'default-frame-alist '(font . "Consolas")))))
 
+;; Define C formatting styles.
+(c-add-style "microsoft"
+             '("stroustrup"
+               (c-offsets-alist
+                (innamespace . -)
+                (inline-open . 0)
+                (inher-cont . c-lineup-multi-inher)
+                (arglist-cont-nonempty . +)
+                (template-args-cont . +))))
+
 ;; Main options that don't come under other sections.
 (add-to-list 'default-frame-alist '(height . 35))
 (add-to-list 'default-frame-alist '(width . 132))
@@ -81,7 +91,7 @@
 (put 'upcase-region 'disabled nil)
 (setq auto-save-default nil
       backup-inhibited t
-      c-default-style "bsd"
+      c-default-style "microsoft"
       calendar-week-start-day 1
       colon-double-space nil
       column-number-mode t
