@@ -7,6 +7,7 @@
 (add-to-list 'package-archives '("melpa-stable" .
                                  "https://stable.melpa.org/packages/")
              t)
+(require 'cc-mode)
 (require 'company)
 (require 'company-lsp)
 (require 'lsp)
