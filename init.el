@@ -26,6 +26,7 @@
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;; Reduce cramp from common keyboard shortcuts.
 (global-set-key (kbd "<f7>") 'ispell-buffer)
