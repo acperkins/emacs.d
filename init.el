@@ -89,6 +89,9 @@
                 (inher-cont . c-lineup-multi-inher)
                 (arglist-cont-nonempty . +)
                 (template-args-cont . +))))
+(defun my-enable-tabs-mode ()
+  (setq indent-tabs-mode t))
+(add-hook 'c++-mode-hook 'my-enable-tabs-mode)
 
 ;; Use ~/.todo.org for the org-mode agenda.
 (cond
