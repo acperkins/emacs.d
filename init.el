@@ -7,6 +7,12 @@
 (add-to-list 'package-archives '("melpa-stable" .
                                  "https://stable.melpa.org/packages/")
              t)
+
+;; Include any non checked-in packages in the ".emacs.d/site-lisp"
+;; directory and checked-in packages in the ".emacs.d/lisp" directory.
+(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
 (require 'cc-mode)
 (require 'company)
 (require 'company-lsp)
@@ -20,11 +26,6 @@
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-
-;; Include any non checked-in packages in the ".emacs.d/site-lisp"
-;; directory and checked-in packages in the ".emacs.d/lisp" directory.
-(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Reduce cramp from common keyboard shortcuts.
 (global-set-key (kbd "<f7>") 'ispell-buffer)
