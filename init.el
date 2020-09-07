@@ -130,11 +130,12 @@
       whitespace-line-column 100
       whitespace-style '(face lines-tail trailing tabs tab-mark)
       x-super-keysym 'meta)
-(setq-default c-basic-offset 4
+(setq-default c-basic-offset 8
               fill-column 72
               frame-title-format '("%b")
               indent-tabs-mode nil
-              olivetti-body-width 102)
+              olivetti-body-width 102
+              tab-width 8)
 (show-paren-mode t)
 
 ;; Set up Magit.
