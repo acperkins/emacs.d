@@ -88,6 +88,12 @@
                 (arglist-cont-nonempty . +)
                 (template-args-cont . +))))
 
+;; Use ~/.todo.org for the org-mode agenda.
+(cond
+ ((string-equal system-type "gnu/linux")
+  (progn
+    (setq org-agenda-files '("~/.todo.org")))))
+
 ;; Main options that don't come under other sections.
 (add-to-list 'default-frame-alist '(height . 35))
 (add-to-list 'default-frame-alist '(width . 132))
@@ -106,7 +112,6 @@
       line-move-visual nil
       mouse-wheel-progressive-speed nil
       mouse-wheel-scroll-amount '(4 ((shift) . 1) ((control) . 8))
-      org-agenda-files '("~/.todo.org")
       org-log-done 'time
       org-startup-folded nil
       org-startup-truncated nil
