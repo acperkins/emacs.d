@@ -18,6 +18,7 @@
 (require 'company-lsp)
 (require 'lsp)
 (require 'lsp-clients)
+(require 'lsp-rust)
 (require 'olivetti)
 (require 'rust-mode)
 (add-hook 'c-mode-hook 'lsp)
