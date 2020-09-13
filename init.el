@@ -141,6 +141,7 @@
               olivetti-body-width 102
               tab-width 8)
 (show-paren-mode t)
+(setq exec-path (append exec-path '("~/.cargo/bin")))
 
 ;; Set up Magit.
 (global-set-key (kbd "C-x g") 'magit-status)
