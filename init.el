@@ -13,22 +13,11 @@
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(require 'cc-mode)
-(require 'company)
-(require 'company-lsp)
-(require 'lsp)
-(require 'lsp-clients)
-(require 'lsp-rust)
 (require 'olivetti)
-(require 'rust-mode)
-(add-hook 'c-mode-hook 'lsp)
-(push 'company-lsp company-backends)
-(add-hook 'after-init-hook 'global-company-mode)
 (autoload 'adoc-mode "adoc-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
 (autoload 'yaml-mode "yaml-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;; Reduce cramp from common keyboard shortcuts.
 (global-set-key (kbd "<f7>") 'ispell-buffer)
@@ -48,12 +37,6 @@
 (global-set-key (kbd "<find>"     ) 'isearch-forward)         ; Find
 (global-set-key (kbd "<XF86Cut>"  ) 'kill-region)             ; Cut
 
-;; Assign keyboard shortcuts for individual modes.
-(defun my-indent-relative-first-only ()
-  (interactive)
-  (indent-relative t nil))
-(define-key c-mode-map (kbd "<C-tab>") 'my-indent-relative-first-only)
-
 ;; Prefer UTF-8 encoding for all files.
 (prefer-coding-system 'utf-8)
 
@@ -61,13 +44,12 @@
 ;; Source: <https://www.emacswiki.org/emacs/CalendarWeekNumbers>
 (copy-face font-lock-constant-face 'calendar-iso-week-face)
 (set-face-attribute 'calendar-iso-week-face nil :height 0.7)
-(setq calendar-intermonth-text
-      '(propertize
+(setq calendar-intermonth-text '(propertize
         (format "%2d"
                 (car
                  (calendar-iso-from-absolute
-                  (calendar-absolute-from-gregorian (list month day year)))))
-        'font-lock-face 'font-lock-function-name-face))
+                  (calendar-absolute-from-gregorian (list month day year))))) 'font-lock-face
+        'font-lock-function-name-face))
 
 ;; Use a theme.
 (load-theme 'modus-operandi t)  ; Light theme
@@ -81,19 +63,6 @@
  ((string-equal system-type "windows-nt")
   (progn
     (add-to-list 'default-frame-alist '(font . "Consolas")))))
-
-;; Define C formatting styles.
-(c-add-style "microsoft"
-             '("stroustrup"
-               (c-offsets-alist
-                (innamespace . -)
-                (inline-open . 0)
-                (inher-cont . c-lineup-multi-inher)
-                (arglist-cont-nonempty . +)
-                (template-args-cont . +))))
-(defun my-enable-tabs-mode ()
-  (setq indent-tabs-mode t))
-(add-hook 'c++-mode-hook 'my-enable-tabs-mode)
 
 ;; Use ~/.todo.org for the org-mode agenda.
 (cond
@@ -111,7 +80,6 @@
 (put 'upcase-region 'disabled nil)
 (setq auto-save-default nil
       backup-inhibited t
-      c-default-style "microsoft"
       calendar-week-start-day 1
       colon-double-space nil
       column-number-mode t
@@ -135,8 +103,7 @@
       whitespace-line-column 100
       whitespace-style '(face lines-tail trailing tabs tab-mark)
       x-super-keysym 'meta)
-(setq-default c-basic-offset 8
-              fill-column 72
+(setq-default fill-column 72
               frame-title-format '("%b")
               indent-tabs-mode nil
               olivetti-body-width 102
@@ -146,6 +113,12 @@
 
 ;; Set up Magit.
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; Programming-related config should go into this file, as it can get
+;; quite long and complicated.
+(setq acp-programming-file (expand-file-name "programming.el" user-emacs-directory))
+(if (file-readable-p (symbol-value 'acp-programming-file))
+    (load acp-programming-file))
 
 ;; Set and read the external (non checked-in) Custom file. This
 ;; section should always be at the end of the file.

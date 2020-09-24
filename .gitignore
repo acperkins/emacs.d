@@ -12,3 +12,4 @@
 /site-lisp/*
 /url/*
 session.*
+programming.el
