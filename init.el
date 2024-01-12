@@ -52,8 +52,8 @@
         'font-lock-function-name-face))
 
 ;; Use a theme.
-(load-theme 'modus-operandi t)  ; Light theme
-;(load-theme 'modus-vivendi t)  ; Dark theme
+;(load-theme 'modus-operandi t)  ; Light theme
+(load-theme 'modus-vivendi t)  ; Dark theme
 
 ;; Set font based on operating system.
 (cond
