@@ -4,12 +4,14 @@
 /ac-comphist.dat
 /auto-save-list/*
 /custom.el
+/eln-cache/*
 /elpa/archives/*
 /elpa/gnupg/*
 /eshell/*
 /eww-bookmarks
 /server/*
 /site-lisp/*
+/transient/*
 /url/*
 session.*
 programming.el
