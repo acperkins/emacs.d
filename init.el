@@ -60,10 +60,10 @@
 (cond
  ((string-equal system-type "gnu/linux")
   (progn
-    (add-to-list 'default-frame-alist '(font . "Noto Sans Mono-11"))))
+    (add-to-list 'default-frame-alist '(font . "Berkeley Mono-11"))))
  ((string-equal system-type "windows-nt")
   (progn
-    (add-to-list 'default-frame-alist '(font . "Consolas")))))
+    (add-to-list 'default-frame-alist '(font . "Berkeley Mono")))))
 
 ;; Use ~/.todo.org for the org-mode agenda.
 (cond
